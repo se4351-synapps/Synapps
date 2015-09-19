@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="goodbye_world">Goodbye world!</string>
-    <string name="email_address">email_address</string>
-    <string name="email_address_hint">joschmo@gmail.com</string>
+    <string name="email_address_hint">Email Address</string>
+    <string name="password_hint">Password</string>
     <string name="action_settings">Settings</string>
 </resources>
