@@ -11,6 +11,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:paddingRight="100dp"
+        android:onClick="new_patient_icon_click"
         />
 
     <TextView
