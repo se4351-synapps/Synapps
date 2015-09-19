@@ -5,5 +5,7 @@
     <string name="goodbye_world">Goodbye world!</string>
     <string name="email_address_hint">Email Address</string>
     <string name="password_hint">Password</string>
+    <string name="patient_icon_text">Patient!</string>
+    <string name="loved_one_icon_text">Loved One!</string>
     <string name="action_settings">Settings</string>
 </resources>
