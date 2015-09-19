@@ -56,4 +56,35 @@
         android:textColor="@color/white"
         android:background="@drawable/rounded_button"/>
 
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_below="@id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/forgot_password"
+        android:textColor="@color/synapps_blue"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@id/forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/light_gray"/>
+
+    <Button
+        android:id="@+id/new_user_button"
+        android:layout_below="@id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:text="NEW USER"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"/>
+
 </RelativeLayout>
