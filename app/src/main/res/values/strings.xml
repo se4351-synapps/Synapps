@@ -3,10 +3,13 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="goodbye_world">Goodbye world!</string>
+    <string name="action_settings">Settings</string>
+    <!--Login -->
     <string name="email_address_hint">Email Address</string>
     <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <!--New User Selection -->
     <string name="patient_icon_text">Patient!</string>
     <string name="loved_one_icon_text">Loved One!</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="action_settings">Settings</string>
+    <!--Create New -->
 </resources>
