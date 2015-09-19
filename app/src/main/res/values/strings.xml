@@ -5,5 +5,6 @@
     <string name="goodbye_world">Goodbye world!</string>
     <string name="email_address_hint">Email Address</string>
     <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
     <string name="action_settings">Settings</string>
 </resources>
