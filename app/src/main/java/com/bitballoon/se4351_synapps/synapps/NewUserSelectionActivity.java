@@ -1,6 +1,7 @@
 package com.bitballoon.se4351_synapps.synapps;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,7 @@ public class NewUserSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_user_icons);
+        new_patient_icon_click();
     }
 
     public void new_patient_icon_click() {
@@ -26,6 +28,9 @@ public class NewUserSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(NewUserSelectionActivity.this, "Hello", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(NewUserSelectionActivity.this, CreateNewUserActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

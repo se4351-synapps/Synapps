@@ -7,5 +7,123 @@
         android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/first_name"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/first_name_edittext"
+        android:layout_below="@id/first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"/>
+
+    <TextView
+        android:id="@+id/last_name"
+        android:layout_below="@id/first_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/last_name"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/last_name_edittext"
+        android:layout_below="@id/last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"/>
+
+    <TextView
+        android:id="@+id/email_address"
+        android:layout_below="@id/last_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/email_address"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:id="@+id/email_address_edittext"
+        android:layout_below="@id/email_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"/>
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_below="@id/email_address_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/password"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/password_edittext"
+        android:layout_below="@id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/confirm_password"
+        android:layout_below="@id/password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/confirm_password"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/confirm_password_edittext"
+        android:layout_below="@id/confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_below="@id/confirm_password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/submit"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
 </RelativeLayout>
