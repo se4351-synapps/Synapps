@@ -40,6 +40,10 @@ public class NewUserSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(NewUserSelectionActivity.this, "Go to New User Account page", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(NewUserSelectionActivity.this, CreateNewUserActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
