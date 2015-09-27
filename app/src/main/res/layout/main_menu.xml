@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/top_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_icon"
+                android:layout_centerHorizontal="true"
+                android:text="Profile"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/daily_routine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/profile">
+
+            <ImageView
+                android:id="@+id/daily_routine_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/daily_routine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/daily_routine_icon"
+                android:layout_centerInParent="true"
+                android:text="Daily Routine"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/middle_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/top_row">
+
+        <RelativeLayout
+            android:id="@+id/medication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/medication_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/medication" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/medication_icon"
+                android:layout_centerHorizontal="true"
+                android:text="Medication"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/meals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/medication">
+
+            <ImageView
+                android:id="@+id/meals_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/meals" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meals_icon"
+                android:layout_centerInParent="true"
+                android:text="Meals"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/middle_row">
+
+        <RelativeLayout
+            android:id="@+id/financial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/financial_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/financial" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/financial_icon"
+                android:layout_centerHorizontal="true"
+                android:text="Financial"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/financial">
+
+            <ImageView
+                android:id="@+id/settings_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/settings_icon"
+                android:layout_centerInParent="true"
+                android:text="Settings"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_row"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/call"/>
+</RelativeLayout>

@@ -5,7 +5,7 @@
     <LinearLayout
         android:gravity="center"
         android:layout_centerVertical="true"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dip"
         android:paddingBottom="15dip"
@@ -13,12 +13,12 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <ImageView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/client_default_medium"
+                android:src="@mipmap/client_default"
                 android:id="@+id/patient_icon"
                 />
 
@@ -38,13 +38,14 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <ImageView android:src="@mipmap/loved_one_default_medium"
+        <ImageView
+            android:src="@mipmap/loved_one_default"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:scaleType="fitCenter"
-            android:id="@+id/loved_one_icon"></ImageView>
+            android:id="@+id/loved_one_icon"/>
         <TextView
             android:id="@+id/textLabel2"
             android:layout_width="wrap_content"

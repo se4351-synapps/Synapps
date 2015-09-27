@@ -3,8 +3,6 @@ package com.bitballoon.se4351_synapps.synapps;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     emailAddress.setText("");
                     password.setText("");
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
