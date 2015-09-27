@@ -47,14 +47,6 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     Toast.makeText(CreateNewUserActivity.this, R.string.unmatched_password, Toast.LENGTH_LONG);
                     password.setText("");
                     confirmPassword.setText("");
-                }
-                if (!(firstName.getText().toString().equals("")
-                    && lastName.getText().toString().equals("")
-                    && emailAddress.getText().toString().equals("")
-                    && password.getText().toString().equals("")
-                    && confirmPassword.getText().toString().equals("")))
-                if (firstName.getText().toString().equals("")) {
-
                 } else {
                     Intent intent = new Intent(CreateNewUserActivity.this, HomeActivity.class);
                     startActivity(intent);
