@@ -11,18 +11,54 @@
         android:paddingBottom="15dip"
         >
 
-        <ImageView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitStart"
-            android:src="@mipmap/patient_temp_large"
-            android:id="@+id/patient_icon"
-            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <ImageView android:src="@mipmap/loved_one_temp_large"
+            <ImageView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/client_default_medium"
+                android:id="@+id/patient_icon"
+                />
+
+            <TextView
+                android:id="@+id/textLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/patient_icon"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20px"
+                android:text="User"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ImageView android:src="@mipmap/loved_one_default_medium"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:scaleType="fitStart"
+            android:scaleType="fitCenter"
             android:id="@+id/loved_one_icon"></ImageView>
+        <TextView
+            android:id="@+id/textLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loved_one_icon"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20px"
+            android:text="Loved One"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 
 
