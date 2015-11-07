@@ -8,6 +8,7 @@
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="invalid_login">The email address or password is invalid. Please try again.</string>
     <!--New User Selection -->
     <string name="patient_icon_text">Patient!</string>
     <string name="loved_one_icon_text">Loved One!</string>
@@ -16,4 +17,5 @@
     <string name="last_name">Last Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">Submit</string>
+    <string name="unmatched_password">The password does not match. Please confirm your password.</string>
 </resources>
