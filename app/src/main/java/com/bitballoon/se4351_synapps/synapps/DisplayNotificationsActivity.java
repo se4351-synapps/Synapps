@@ -71,7 +71,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_call:
-                // User chose the "Settings" item, show the app settings UI...
+                // User chose the "Call" item, show the app settings UI...
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
