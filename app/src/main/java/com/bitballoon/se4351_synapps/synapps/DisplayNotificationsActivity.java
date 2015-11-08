@@ -32,6 +32,18 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         notificationArray.add("note 2");
         notificationArray.add("note 3");
         notificationArray.add("note 4");
+        notificationArray.add("note 1");
+        notificationArray.add("note 2");
+        notificationArray.add("note 3");
+        notificationArray.add("note 4");
+        notificationArray.add("note 1");
+        notificationArray.add("note 2");
+        notificationArray.add("note 3");
+        notificationArray.add("note 4");
+        notificationArray.add("note 1");
+        notificationArray.add("note 2");
+        notificationArray.add("note 3");
+        notificationArray.add("note 4");
 
         notificationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, notificationArray);
         notificationsListView.setAdapter(notificationAdapter);
