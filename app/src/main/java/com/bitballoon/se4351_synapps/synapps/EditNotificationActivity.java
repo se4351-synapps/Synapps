@@ -33,8 +33,8 @@ public class EditNotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_notification);
 
-        setCurrentTimeOnView();
-        addListenerOnButton();
+        //setCurrentTimeOnView();
+        //addListenerOnButton();
         //setContentView(R.layout.main_menu);
     }
 

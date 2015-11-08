@@ -25,6 +25,9 @@
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/app_name" />
+        <activity
+            android:name=".EditNotificationActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
