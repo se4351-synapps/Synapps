@@ -48,7 +48,7 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     password.setText("");
                     confirmPassword.setText("");
                 } else {
-                    Intent intent = new Intent(CreateNewUserActivity.this, MainActivity.class);
+                    Intent intent = new Intent(CreateNewUserActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                     finish();
                 }

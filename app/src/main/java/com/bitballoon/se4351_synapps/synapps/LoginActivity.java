@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); //hellobitches
+        setContentView(R.layout.activity_login);
         initializeUI();
         login();
         selectNewUser();
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     emailAddress.setText("");
                     password.setText("");
                 } else {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -63,6 +63,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-//oops
 }
