@@ -18,4 +18,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">Submit</string>
     <string name="unmatched_password">The password does not match. Please confirm your password.</string>
+    <!--Edit Notification-->
+    <string name="date_field">Date Placeholder Label</string>
+    <string name="noti_field">Notification</string>
 </resources>
