@@ -21,9 +21,9 @@ public class Notification {
     Boolean weekday;
     Boolean weekend;
 
-    public Notification(String notification_text, String activity_time, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, boolean weekday, boolean weekend){
+    public Notification(ImageView notification_image, String notification_text, String activity_time, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, boolean weekday, boolean weekend){
         //activity_id++;
-        setNotification_image(notification_image);
+        this.notification_image=notification_image;
         this.notification_text =  notification_text;
         this.activity_time=activity_time;
         this.monday=monday;
