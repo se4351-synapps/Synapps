@@ -22,7 +22,7 @@ public class Notification {
     Boolean weekend;
 
     public Notification(ImageView notification_image, String notification_text, String activity_time, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, boolean weekday, boolean weekend){
-        //activity_id++;
+        //activity_id++; 
         this.notification_image=notification_image;
         this.notification_text =  notification_text;
         this.activity_time=activity_time;
