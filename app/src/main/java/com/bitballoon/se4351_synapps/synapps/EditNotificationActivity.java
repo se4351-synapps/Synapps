@@ -4,6 +4,10 @@ package com.bitballoon.se4351_synapps.synapps;
  * Created by brandonquiocho on 11/6/15.
  */
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import java.util.Calendar;
@@ -15,94 +19,169 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class EditNotificationActivity extends AppCompatActivity {
+    /** Called when the activity is first created. */
+    private TextView mTimeDisplay;
+    private Button mPickTime;
 
-    private TextView tvDisplayTime;
-    private TimePicker timePicker1;
-    private Button btnChangeTime;
+    private int mHour;
+    private int mMinute;
 
-    private int hour;
-    private int minute;
+    static final int TIME_DIALOG_ID = 0;
 
-    static final int TIME_DIALOG_ID = 999;
+    final Context context = this;
+
+    private Button saveButton;
+    private Button cancelButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_notification);
 
-        //setCurrentTimeOnView();
-        //addListenerOnButton();
-        //setContentView(R.layout.main_menu);
-    }
+        initiateUI();
+        saveNotificationBtn();
+        cancelNotificationBtn();
 
-    // display current time
-    public void setCurrentTimeOnView() {
+        // capture our View elements
+        mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
+        mPickTime = (Button) findViewById(R.id.pickTime);
 
-        tvDisplayTime = (TextView) findViewById(R.id.tvTime);
-        timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
-
-        final Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR_OF_DAY);
-        minute = c.get(Calendar.MINUTE);
-
-        // set current time into textview
-        tvDisplayTime.setText(
-                new StringBuilder().append(pad(hour))
-                        .append(":").append(pad(minute)));
-
-        // set current time into timepicker
-        timePicker1.setCurrentHour(hour);
-        timePicker1.setCurrentMinute(minute);
-
-    }
-
-    public void addListenerOnButton() {
-
-        btnChangeTime = (Button) findViewById(R.id.btnChangeTime);
-
-        btnChangeTime.setOnClickListener(new OnClickListener() {
-
-            @Override
+        // add a click listener to the button
+        mPickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 showDialog(TIME_DIALOG_ID);
-
             }
-
         });
 
+        // get the current time
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+        // display the current date
+        updateDisplay();
+    }
+
+    private void initiateUI(){
+        saveButton = (Button)findViewById(R.id.save_button);
+        cancelButton = (Button)findViewById(R.id.cancel_button);
     }
 
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID:
-                // set time picker as current time
                 return new TimePickerDialog(this,
-                        timePickerListener, hour, minute,false);
-
+                        mTimeSetListener, mHour, mMinute, false);
         }
         return null;
     }
 
-    private TimePickerDialog.OnTimeSetListener timePickerListener =
+    public void onCheckBoxClick(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.weekday_btn:
+                if (checked) {
+                    print_message("Weekday Btn");
+                }
+                else {
+                    // Remove the meat
+                }
+                break;
+            case R.id.weekend_btn:
+                if (checked) {
+                    print_message("Weekend Btn");
+                }
+                else {
+                    // I'm lactose intolerant
+                }
+                break;
+            // TODO: Veggie sandwich
+        }
+    }
+
+    private void saveNotificationBtn() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                print_message("Notification Created");
+                //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
+
+            }
+        });
+    }
+
+    private void cancelNotificationBtn() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                print_message("Canceled Notification ._.");
+                Intent intent = new Intent(EditNotificationActivity.this, MainMenuActivity.class);
+                startActivity(intent);
+                finish();
+                //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
+
+            }
+        });
+    }
+
+    public void print_message(String str) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle("Print Message Called ^-^");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(str)
+                .setCancelable(false)
+                .setPositiveButton("Okay",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, open CreateNewUserActivity
+                        dialog.cancel();
+                    }
+                });
+//                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog,int id) {
+//                        // if this button is clicked, prompt the user
+//                        // with the same question
+//                        dialog.cancel();
+//                    }
+//                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+
+    // updates the time we display in the TextView
+    private void updateDisplay() {
+        mTimeDisplay.setText(
+                new StringBuilder()
+                        .append(pad(mHour)).append(":")
+                        .append(pad(mMinute)));
+    }
+
+    // the callback received when the user "sets" the time in the dialog
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener =
             new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int selectedHour,
-                                      int selectedMinute) {
-                    hour = selectedHour;
-                    minute = selectedMinute;
-
-                    // set current time into textview
-                    tvDisplayTime.setText(new StringBuilder().append(pad(hour))
-                            .append(":").append(pad(minute)));
-
-                    // set current time into timepicker
-                    timePicker1.setCurrentHour(hour);
-                    timePicker1.setCurrentMinute(minute);
-
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    mHour = hourOfDay;
+                    mMinute = minute;
+                    updateDisplay();
                 }
             };
 
