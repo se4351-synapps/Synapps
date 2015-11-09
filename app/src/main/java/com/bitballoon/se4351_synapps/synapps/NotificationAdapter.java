@@ -28,9 +28,12 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
         // Lookup view for data population
         ImageView notificationImage = (ImageView) convertView.findViewById(R.id.notification_image);
         String notificationText = (String) convertView.findViewById(R.id.notification_text).toString();
+        String notificationTime = (String) convertView.findViewById(R.id.notification_time).toString();
+
         // Populate the data into the template view using the data object
-        notificationImage.setImageDrawable(notification.getNotification_image().getDrawable());
-        notificationText = notification.getNotification_text();
+        notificationImage.setImageResource(R.mipmap.daily_routine);
+        //notificationText = notification.getNotification_text();
+        //notificationTime = notification.getActivity_time();
         // Return the completed view to render on screen
         return convertView;
     }

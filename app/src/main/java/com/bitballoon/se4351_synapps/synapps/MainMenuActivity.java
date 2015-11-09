@@ -49,7 +49,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) throws SecurityException {
         switch (item.getItemId()) {
             case R.id.action_call:
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
