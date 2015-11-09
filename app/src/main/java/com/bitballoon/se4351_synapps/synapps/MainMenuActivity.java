@@ -17,6 +17,7 @@ import android.view.MenuItem;
 public class MainMenuActivity extends AppCompatActivity {
 
     private ImageView daily_routine_icon;
+    private ImageView back_icon;
     final Context context = this;
 
 
@@ -25,6 +26,7 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
         daily_routine_icon_click();
+        back_icon_click();
 
     }
 
@@ -40,7 +42,22 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
     }
-    
+
+    public void back_icon_click() {
+        back_icon = (ImageView) findViewById(R.id.back_icon);
+        back_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
+
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
