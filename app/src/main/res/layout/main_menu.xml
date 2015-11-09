@@ -125,4 +125,40 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/return_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/bottom_row">
+
+        <RelativeLayout
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/back_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/back_icon"
+                android:layout_centerHorizontal="true"
+                android:text="Back to Main Page"
+                android:textSize="20sp"
+                android:textColor="@color/synapps_blue"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 </RelativeLayout>
