@@ -27,6 +27,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         setContentView(R.layout.display_notifications);
         notificationsListView = (ListView) findViewById(R.id.notifications_listview);
 
+        Notification notification1 = new Notification(R.id.notification_image, R.id.notification_text, R.id.activity)
         ArrayList<String> notificationArray = new ArrayList<String>();
         notificationArray.add("note 1");
         notificationArray.add("note 2");

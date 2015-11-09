@@ -23,9 +23,23 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+        daily_routine_icon_click();
 
     }
 
+    public void daily_routine_icon_click() {
+        daily_routine_icon = (ImageView) findViewById(R.id.daily_routine_icon);
+        daily_routine_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainMenuActivity.this, EditNotificationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -45,17 +59,6 @@ public class MainMenuActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    public void new_loved_one_icon_click() {
-        daily_routine_icon = (ImageView) findViewById(R.id.daily_routine_icon);
-        daily_routine_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(MainMenuActivity.this, EditNotificationActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-    }
+}
 

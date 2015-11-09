@@ -11,15 +11,21 @@ public class Notification {
     ImageView notification_image;
     String notification_text;
     String activity_time;
-    Boolean monday;
-    Boolean tuesday;
-    Boolean wednesday;
-    Boolean thursday;
-    Boolean friday;
-    Boolean saturday;
-    Boolean sunday;
-    Boolean weekday;
-    Boolean weekend;
+    boolean monday;
+    boolean tuesday;
+    boolean wednesday;
+    boolean thursday;
+    boolean friday;
+    boolean saturday;
+    boolean sunday;
+    boolean weekday;
+    boolean weekend;
+
+    public Notification(ImageView notification_image, String notification_text, String activity_time) {
+        this.notification_image = notification_image;
+        this.notification_text = notification_text;
+        this.activity_time = activity_time;
+    }
 
     public Notification(ImageView notification_image, String notification_text, String activity_time, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, boolean weekday, boolean weekend){
         //activity_id++; 
@@ -56,6 +62,10 @@ public class Notification {
 
     public String getNotification_text() {
         return notification_text;
+    }
+
+    public ImageView getNotification_image() {
+        return notification_image;
     }
 
     public void setActivity_time(String activity_time) {
