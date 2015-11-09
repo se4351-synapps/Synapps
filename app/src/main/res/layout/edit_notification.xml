@@ -13,6 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
+
             android:text="@string/date_field"
             android:textColor="@color/synapps_blue"
             android:textSize="25sp"/>
@@ -40,56 +41,191 @@
             android:background="@drawable/rounded_edittext"
             android:imeOptions="actionNext" />
 
-
-        <Button
-            android:id="@+id/btnChangeTime"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/time_field"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noti_field_input"
-            android:text="Change Time"
-            android:background="@drawable/rounded_button"
-            android:textSize="20sp"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/lblTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnChangeTime"
-            android:text="Current Time (H:M): "
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            />
-
-        <TextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lblTime"
-            android:text=""
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Time"
             android:textColor="@color/synapps_blue"
             android:textSize="25sp"/>
 
-        <TimePicker
-            android:id="@+id/timePicker1"
+        <Button android:id="@+id/pickTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTime"
+            android:text=" Set Time "
+            android:background="@drawable/rounded_button"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/time_field"
+            android:layout_centerHorizontal="true" />
+
+        <TextView android:id="@+id/timeDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Time Label"
+            android:layout_marginTop="10dp"
             android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            />
+            android:textSize="20sp"
+            android:layout_below="@+id/pickTime"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/repeat_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timeDisplay"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Repeat"
+            android:textColor="@color/synapps_blue"
+            android:textSize="25sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/repeat_field"
+            android:layout_marginTop="10dp"
+            android:id="@+id/repeat_field_input"
+            >
+
+            <CheckBox android:id="@+id/weekday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Weekday"
+                android:onClick="onCheckBoxClick"/>
+
+            <CheckBox android:id="@+id/weekend_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@id/weekday_btn"
+                android:text="Weekend"
+                android:onClick="onCheckBoxClick"/>
+
+            <CheckBox android:id="@+id/monday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:onClick="onCheckBoxClick"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/thursday_btn"
+                android:layout_alignStart="@+id/thursday_btn" />
+
+            <CheckBox android:id="@+id/tuesday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/weekday_btn"
+                android:text="Tuesday"
+                android:onClick="onCheckBoxClick"/>
+
+            <CheckBox android:id="@+id/wednesday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wednesday"
+                android:onClick="onCheckBoxClick"
+                android:layout_below="@+id/weekend_btn"
+                android:layout_alignLeft="@+id/saturday_btn"
+                android:layout_alignStart="@+id/saturday_btn" />
+
+            <CheckBox android:id="@+id/thursday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/monday_btn"
+                android:layout_toRightOf="@id/wednesday_btn"
+                android:text="Thursday"
+                android:onClick="onCheckBoxClick"/>
+
+            <CheckBox android:id="@+id/friday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/tuesday_btn"
+                android:text="Friday"
+                android:onClick="onCheckBoxClick"/>
+
+            <CheckBox android:id="@+id/saturday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:text="Saturday"
+            android:onClick="onCheckBoxClick"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/weekend_btn"
+                android:layout_alignStart="@+id/weekend_btn" />
+
+            <CheckBox android:id="@+id/sunday_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sunday"
+                android:onClick="onCheckBoxClick"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/thursday_btn"
+                android:layout_alignStart="@+id/thursday_btn" />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/img_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/repeat_field_input"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Image"
+            android:textColor="@color/synapps_blue"
+            android:textSize="25sp"/>
+
+        <Button android:id="@+id/img_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Upload Image "
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/img_field"
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:id="@+id/submit_button"
-            android:layout_below="@id/timePicker1"
-            android:layout_width="match_parent"
+            android:id="@+id/cancel_button"
+            android:layout_below="@id/img_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_button"
-            android:text="@string/submit"
-            android:textSize="20sp"
+            android:background="@drawable/rounded_button_red"
+            android:text="Cancel"
+            android:textSize="15sp"
             android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_green"
+            android:text="Save"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/cancel_button"
+            android:layout_alignRight="@+id/img_field"
+            android:layout_alignEnd="@+id/img_field"
+            />
+
     </RelativeLayout>
 </ScrollView>
