@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="140dp">
 
         <RelativeLayout
             android:id="@+id/profile"
@@ -21,8 +21,10 @@
                 android:id="@+id/profile_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/profile" />
+                android:src="@mipmap/profile"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/textView"
+                android:layout_alignEnd="@+id/textView" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,7 +34,8 @@
                 android:text="Profile"
                 android:textSize="20sp"
                 android:textColor="@color/synapps_blue"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -63,72 +66,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/middle_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/top_row">
-
-        <RelativeLayout
-            android:id="@+id/medication"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp">
-
-            <ImageView
-                android:id="@+id/medication_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/medication" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/medication_icon"
-                android:layout_centerHorizontal="true"
-                android:text="Medication"
-                android:textSize="20sp"
-                android:textColor="@color/synapps_blue"
-                android:layout_marginTop="5dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/meals"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/medication">
-
-            <ImageView
-                android:id="@+id/meals_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/meals" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/meals_icon"
-                android:layout_centerInParent="true"
-                android:text="Meals"
-                android:textSize="20sp"
-                android:textColor="@color/synapps_blue"
-                android:layout_marginTop="5dp"/>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/bottom_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/middle_row">
+        android:layout_below="@id/top_row">
 
         <RelativeLayout
             android:id="@+id/financial"
@@ -182,10 +125,4 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bottom_row"
-        android:layout_marginTop="50dp"
-        android:src="@mipmap/call"/>
 </RelativeLayout>
