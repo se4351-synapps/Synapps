@@ -1,6 +1,7 @@
 package com.bitballoon.se4351_synapps.synapps;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -72,6 +73,9 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_call:
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:2816850685"));
+                startActivity(callIntent);
                 // User chose the "Call" item, show the app settings UI...
                 return true;
             default:
