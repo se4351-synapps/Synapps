@@ -66,7 +66,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         notificationArray = new ArrayList<Notification>();
         notificationImage = (ImageView) findViewById(R.id.notification_image);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             String text = "This is Notification " + (i+1) + " shown on two lines";
             String time = "12:00 PM";
             notificationText = text;

@@ -19,15 +19,17 @@
         android:layout_weight="4"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:text="This is a notification shown on two lines"
+        android:text="This is a notification shown on two lines. The notification will run off after the second line and show ellipses at the end."
         android:maxLines="2"
-        android:ellipsize="marquee"/>
+        android:ellipsize="end"
+        android:scrollHorizontally="true"/>
 
     <TextView
         android:id="@+id/notification_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:text="10:30 AM"/>
