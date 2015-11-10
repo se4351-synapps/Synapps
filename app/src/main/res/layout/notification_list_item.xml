@@ -6,29 +6,29 @@
 
     <ImageView
         android:id="@+id/notification_image"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
         android:layout_marginTop="10dp"
         android:src="@mipmap/daily_routine" />
 
     <TextView
         android:id="@+id/notification_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_weight="4"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:text="This is a notification" />
+        android:text="This is a notification shown on two lines"
+        android:maxLines="2"
+        android:ellipsize="marquee"/>
 
     <TextView
         android:id="@+id/notification_time"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:text="8:30 AM"/>
+        android:text="10:30 AM"/>
 </LinearLayout>
