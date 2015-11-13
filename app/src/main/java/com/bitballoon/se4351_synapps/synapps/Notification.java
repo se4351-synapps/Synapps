@@ -1,6 +1,9 @@
 package com.bitballoon.se4351_synapps.synapps;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Bontavy on 11/8/2015.
@@ -9,8 +12,8 @@ public class Notification {
     //int activity_id=0;
 
     ImageView notification_image;
-    String notification_text;
-    String activity_time;
+    String notification_text = "";
+    String activity_time = "";
     boolean monday;
     boolean tuesday;
     boolean wednesday;
@@ -23,15 +26,15 @@ public class Notification {
 
     public Notification(ImageView notification_image, String notification_text, String activity_time) {
         this.notification_image = notification_image;
-        this.notification_text = notification_text;
-        this.activity_time = activity_time;
+        this.notification_text.equals(notification_text);
+        this.activity_time.equals(activity_time);
     }
 
     public Notification(ImageView notification_image, String notification_text, String activity_time, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, boolean weekday, boolean weekend){
         //activity_id++; 
         this.notification_image=notification_image;
-        this.notification_text =  notification_text;
-        this.activity_time=activity_time;
+        this.notification_text.equals(notification_text);
+        this.activity_time.equals(activity_time);
         this.monday=monday;
         this.tuesday=tuesday;
         this.wednesday=wednesday;
@@ -57,7 +60,7 @@ public class Notification {
     }
 
     public void setNotification_text(String notification_text) {
-        this.notification_text = notification_text;
+        this.notification_text.equals(notification_text);
     }
 
     public String getNotification_text() {
@@ -69,7 +72,7 @@ public class Notification {
     }
 
     public void setActivity_time(String activity_time) {
-        this.activity_time = activity_time;
+        this.activity_time.equals(activity_time);
     }
 
     public String getActivity_time() {

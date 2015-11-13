@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,39 +28,26 @@ import java.util.TimeZone;
  * Created by Bontavy on 11/6/2015.
  */
 public class DisplayNotificationsActivity extends AppCompatActivity {
+    // variables relating to listview for notifications
     ListView notificationsListView;
-    ArrayAdapter<Notification> notificationAdapter;
-    ImageView homeButton;
-
+    NotificationAdapter notificationAdapter;
     ImageView notificationImage;
     String notificationText;
     String notificationTime;
+    ArrayList<Notification> notificationArray;
+
+    // home button
+    ImageView homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_notifications);
 
-        notificationsListView = (ListView) findViewById(R.id.notifications_listview);
+        // set the adapter for the listview for notifications
+        setNotificationAdapter();
 
-        notificationImage = (ImageView) findViewById(R.id.notification_image);
-
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC-06:00"));
-        Date currentLocalTime = cal.getTime();
-        DateFormat date = new SimpleDateFormat("KK:mm");
-        date.setTimeZone(TimeZone.getTimeZone("UTC-06:00"));
-        String localTime = date.format(currentLocalTime);
-
-        notificationTime = localTime;
-        Notification notification1 = new Notification(notificationImage, "notification 1", notificationTime);
-        Notification notification2 = new Notification(notificationImage, "notification 2", notificationTime);
-        ArrayList<Notification> notificationArray = new ArrayList<Notification>();
-        notificationArray.add(notification1);
-        notificationArray.add(notification2);
-
-        notificationAdapter = new ArrayAdapter<Notification>(this, android.R.layout.simple_list_item_1, notificationArray);
-        notificationsListView.setAdapter(notificationAdapter);
-
+        // home button goes to main menu
         homeButton = (ImageView) findViewById(R.id.home_button);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +60,24 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         });
     }
 
+    // method sets the adapter for the listview of notifications
+    private void setNotificationAdapter() {
+        notificationsListView = (ListView) findViewById(R.id.notifications_listview);
+        notificationArray = new ArrayList<Notification>();
+        notificationImage = (ImageView) findViewById(R.id.notification_image);
+
+        for (int i = 0; i < 50; i++) {
+            String text = "This is Notification " + (i+1) + " shown on two lines";
+            String time = "12:00 PM";
+            notificationText = text;
+            notificationTime = time;
+            Notification notification = new Notification(notificationImage, notificationText, notificationTime);
+            notificationArray.add(notification);
+        }
+
+        notificationAdapter = new NotificationAdapter(this, notificationArray);
+        notificationsListView.setAdapter(notificationAdapter);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
