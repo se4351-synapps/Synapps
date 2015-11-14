@@ -14,6 +14,9 @@ public class Notification {
     ImageView notification_image;
     String notification_text = "";
     String activity_time = "";
+    int type; //4 types: regular -1/meals -2/medication - 3/ financial 4
+    //do what you need to
+
     boolean monday;
     boolean tuesday;
     boolean wednesday;
@@ -23,6 +26,7 @@ public class Notification {
     boolean sunday;
     boolean weekday;
     boolean weekend;
+
 
     public Notification(ImageView notification_image, String notification_text, String activity_time) {
         this.notification_image = notification_image;
