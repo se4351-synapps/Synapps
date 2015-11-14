@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,9 +33,9 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
         String notificationTime = (String) convertView.findViewById(R.id.notification_time).toString();
 
         // Populate the data into the template view using the data object
-        notificationImage.setImageResource(R.mipmap.daily_routine);
-        //notificationText = notification.getNotification_text();
-        //notificationTime = notification.getActivity_time();
+        notificationImage.equals(notification.getNotification_image());
+        notificationText.equals(notification.getNotification_text());
+        notificationTime.equals(notification.getActivity_time());
         // Return the completed view to render on screen
         return convertView;
     }
