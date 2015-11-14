@@ -92,7 +92,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:2816850685"));
                 startActivity(callIntent);
-                // User chose the "Call" item, show the app settings UI...
+                // User chose the "Call" item, call caretaker
                 return true;
             default:
                 // If we got here, the user's action was not recognized.

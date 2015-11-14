@@ -76,13 +76,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) throws SecurityException{
         switch (item.getItemId()) {
             case R.id.action_call:
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:2816850685"));
                 startActivity(callIntent);
-                // User chose the "Call" item, show the app settings UI...
+                // User chose the "Call" item, call caretaker
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
@@ -91,5 +91,4 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
-
 }
