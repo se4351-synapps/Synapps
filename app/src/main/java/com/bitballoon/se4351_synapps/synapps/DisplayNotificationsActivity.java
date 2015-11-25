@@ -1,5 +1,7 @@
 package com.bitballoon.se4351_synapps.synapps;
 
+import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
@@ -27,13 +29,13 @@ import java.util.TimeZone;
 /**
  * Created by Bontavy on 11/6/2015.
  */
-public class DisplayNotificationsActivity extends AppCompatActivity {
+public class DisplayNotificationsActivity extends Activity {
     // variables relating to listview for notifications
     ListView notificationsListView;
     NotificationAdapter notificationAdapter;
     ImageView notificationImage;
-    String notificationText;
-    String notificationTime;
+    TextView notificationText;
+    TextView notificationTime;
     ArrayList<Notification> notificationArray;
 
     // home button
@@ -64,19 +66,29 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     private void setNotificationAdapter() {
         notificationsListView = (ListView) findViewById(R.id.notifications_listview);
         notificationArray = new ArrayList<Notification>();
-        notificationImage = (ImageView) findViewById(R.id.notification_image);
-
-        for (int i = 0; i < 50; i++) {
-            String text = "This is Notification " + (i+1) + " shown on two lines";
-            String time = "12:00 PM";
-            notificationText = text;
-            notificationTime = time;
-            Notification notification = new Notification(notificationImage, notificationText, notificationTime);
-            notificationArray.add(notification);
-        }
 
         notificationAdapter = new NotificationAdapter(this, notificationArray);
         notificationsListView.setAdapter(notificationAdapter);
+
+        notificationText = new TextView(this);
+        notificationTime = new TextView(this);
+
+        for (int i = 0; i < 10; i++) {
+            DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+            //get current date time with Calendar()
+            Calendar cal = Calendar.getInstance();
+
+            String text = "This is Notification " + (i+1) + " shown on two lines";
+            String time = dateFormat.format(cal.getTime());
+
+            notificationText.setText(text);
+            notificationTime.setText(time);
+
+            Notification notification = new Notification(notificationImage, notificationText, notificationTime);
+            notificationArray.add(notification);
+        }
+        notificationAdapter.addAll(notificationArray);
+        notificationAdapter.notifyDataSetChanged();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
