@@ -1,16 +1,23 @@
 package com.bitballoon.se4351_synapps.synapps;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,7 +36,7 @@ import java.util.TimeZone;
 /**
  * Created by Bontavy on 11/6/2015.
  */
-public class DisplayNotificationsActivity extends Activity {
+public class DisplayNotificationsActivity extends AppCompatActivity {
     // variables relating to listview for notifications
     ListView notificationsListView;
     NotificationAdapter notificationAdapter;
@@ -48,6 +55,9 @@ public class DisplayNotificationsActivity extends Activity {
 
         // set the adapter for the listview for notifications
         setNotificationAdapter();
+
+        // show detailed view of notification
+        showDetailedNotification();
 
         // home button goes to main menu
         homeButton = (ImageView) findViewById(R.id.home_button);
@@ -70,26 +80,66 @@ public class DisplayNotificationsActivity extends Activity {
         notificationAdapter = new NotificationAdapter(this, notificationArray);
         notificationsListView.setAdapter(notificationAdapter);
 
+        notificationImage = new ImageView(this);
         notificationText = new TextView(this);
         notificationTime = new TextView(this);
 
-        for (int i = 0; i < 10; i++) {
+        // loop to make list of notifications
+        for (int i = 0; i < 5; i++) {
             DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
             //get current date time with Calendar()
             Calendar cal = Calendar.getInstance();
 
-            String text = "This is Notification " + (i+1) + " shown on two lines";
+            // strings for the notification text
+            String text = "Feed your cat. The food is called Fancy Feast which you can find in the kitchen in the cabinet to the right of the stove.";
             String time = dateFormat.format(cal.getTime());
-
+            // sets notification data
+            notificationImage.setImageResource(R.mipmap.daily_routine);
             notificationText.setText(text);
             notificationTime.setText(time);
-
+            // creates notification and adds to arraylist
             Notification notification = new Notification(notificationImage, notificationText, notificationTime);
             notificationArray.add(notification);
         }
-        notificationAdapter.addAll(notificationArray);
         notificationAdapter.notifyDataSetChanged();
     }
+
+    // methods shows detailed view of notification
+    private void showDetailedNotification() {
+        // for decreasing the size of notification image in the alertdialog
+        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        final int DESIRED_WIDTH = (int) display.getWidth() / 2;
+        final int DESIRED_HEIGHT = (int) display.getHeight() / 2;
+
+        // when notification in listview is clicked
+        notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // set size of notification image in the alertdialog
+                ImageView notificationImage = notificationArray.get(position).getNotification_image();
+                notificationImage.setMinimumWidth(DESIRED_WIDTH);
+                notificationImage.setMinimumHeight(DESIRED_HEIGHT);
+                // add notification info and buttons in the alertdialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage(notificationArray.get(position).getNotification_text() +
+                        "\n\nComplete Task at: " + notificationArray.get(position).getActivity_time())
+                        .setView(notificationImage)
+                        .setNegativeButton("Close", null)
+                        .setPositiveButton("Confirm Completion", null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+                // set size of alertdialog to fill screen
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                lp.copyFrom(alertDialog.getWindow().getAttributes());
+                lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+                lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+                alertDialog.getWindow().setAttributes(lp);
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
