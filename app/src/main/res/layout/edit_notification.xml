@@ -11,9 +11,8 @@
             android:id="@+id/date_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:layout_centerHorizontal="true"
-
             android:text="@string/date_field"
             android:textColor="@color/synapps_blue"
             android:textSize="25sp"/>
@@ -37,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:hint="Walk Dog..."
             android:padding="10dp"
             android:background="@drawable/rounded_edittext"
             android:imeOptions="actionNext" />

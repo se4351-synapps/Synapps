@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class EditNotificationActivity extends AppCompatActivity {
 
     private int mHour;
     private int mMinute;
+    private String mAMPM;
 
     static final int TIME_DIALOG_ID = 0;
 
@@ -40,6 +42,8 @@ public class EditNotificationActivity extends AppCompatActivity {
 
     private Button saveButton;
     private Button cancelButton;
+
+    EditText noti_input;
 
 
     @Override
@@ -50,6 +54,9 @@ public class EditNotificationActivity extends AppCompatActivity {
         initiateUI();
         saveNotificationBtn();
         cancelNotificationBtn();
+
+        // notification input variable
+        noti_input = (EditText)findViewById(R.id.noti_field_input);
 
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
@@ -116,7 +123,8 @@ public class EditNotificationActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                print_message("Notification Created");
+                //print_message("Notification Created");
+                print_notification(noti_input.getText().toString(), mHour, mMinute);
                 //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
 
             }
@@ -135,6 +143,52 @@ public class EditNotificationActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void print_notification(String str, int hour, int min) {
+
+        if (hour >= 12) {
+            mAMPM = "PM";
+            if(hour != 12){
+                hour = hour - 12;
+            }
+        }
+        else{
+            if(hour == 0){
+                hour = 12;
+            }
+            mAMPM = "AM";
+        }
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle("Save Button Called ^-^");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Notification saved: "+ str + " " + hour + ":" +  min + " " + mAMPM)
+                .setCancelable(false)
+                .setPositiveButton("Okay",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, open CreateNewUserActivity
+                        dialog.cancel();
+                    }
+                });
+//                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog,int id) {
+//                        // if this button is clicked, prompt the user
+//                        // with the same question
+//                        dialog.cancel();
+//                    }
+//                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 
     public void print_message(String str) {
