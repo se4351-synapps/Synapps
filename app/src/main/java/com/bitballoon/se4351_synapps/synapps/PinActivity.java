@@ -7,17 +7,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Bontavy on 11/14/2015.
  */
 public class PinActivity extends AppCompatActivity {
 
+    private EditText pinNumber;
+    private Button pinButton;
+    private Button newPinButton;
+    private Button resumeAppButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_pin);
+        initializeUI();
+        resumeApp();
     }
+
+    private void initializeUI() {
+        newPinButton = (Button)findViewById(R.id.new_pin_button);
+        pinButton = (Button)findViewById(R.id.pin_button);
+        resumeAppButton = (Button)findViewById(R.id.resume_to_app);
+
+    }
+
+    private void resumeApp() {
+        resumeAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,4 +75,7 @@ public class PinActivity extends AppCompatActivity {
 
         }
     }
+
+
+
 }
