@@ -12,6 +12,8 @@
     <!--PIN -->
     <string name="pin_number">PIN Number</string>
     <string name="forgot_pin">Forgot PIN?</string>
+    <string name="invalid_pin">The PIN entered is invalid. Please try again.</string>
+    <string name="pin_actual">""</string>
     <!--New User Selection -->
     <string name="patient_icon_text">Patient!</string>
     <string name="loved_one_icon_text">Loved One!</string>
