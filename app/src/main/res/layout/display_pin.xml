@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
 
-</RelativeLayout>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".PinActivity">
+
+
+        <EditText
+            android:id="@+id/pin_number"
+            android:layout_below="@id/synapps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/pin_number"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            />
+
+        <Button
+            android:id="@+id/pin_button"
+            android:layout_below="@id/pin_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="LOGIN"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"/>
+
+
+        <TextView
+            android:id="@+id/forgot_pin"
+            android:layout_below="@id/pin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/forgot_pin"
+            android:textColor="@color/synapps_blue" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/forgot_pin"
+            android:layout_marginTop="1dp"
+            android:background="@color/light_gray" />
+
+        <Button
+            android:id="@+id/new_pin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="MAKE PIN"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/resume_to_app"
+            android:layout_below="@id/new_pin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/rounded_button"
+            android:text="**resume to app**"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -12,77 +12,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 
 /**
- * Created by Bontavy on 11/14/2015.
+ * Created by Karis on 11/27/2015.
  */
-public class PinActivity extends AppCompatActivity {
-
+public class CreatePinActivity extends AppCompatActivity {
     private EditText pinNumber;
-    private Button pinButton;
-    private Button newPinButton;
-    private Button resumeAppButton;
-    private String activePin;
+    private Button makepinButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display_pin);
+        setContentView(R.layout.create_pin);
         initializeUI();
-        resumeApp();
-        logIn();
         makePin();
     }
 
     private void initializeUI() {
-        //activePin = @string/pin_actual;
-
         pinNumber = (EditText)findViewById(R.id.pin_number);
-        newPinButton = (Button)findViewById(R.id.new_pin_button);
-        pinButton = (Button)findViewById(R.id.pin_button);
-        resumeAppButton = (Button)findViewById(R.id.resume_to_app);
-
+        makepinButton = (Button)findViewById(R.id.pin_button);
     }
 
-    private void resumeApp() {
-        resumeAppButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
-    private void logIn() {
-        pinButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (pinNumber.getText().toString().equals("1514")) {
-                //if (pinNumber.getText().toString().equals(@string/pin_actual)) {
-                    Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                } else {
-                    Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
-                    pinNumber.setText("");
-                }
-            }
-
-
-        });
-    }
     private void makePin() {
-        newPinButton.setOnClickListener(new View.OnClickListener() {
+        makepinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PinActivity.this, CreatePinActivity.class);
+                Intent intent = new Intent(CreatePinActivity.this, PinActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -114,7 +71,4 @@ public class PinActivity extends AppCompatActivity {
 
         }
     }
-
-
-
 }

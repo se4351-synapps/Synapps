@@ -65,7 +65,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DisplayNotificationsActivity.this, MainMenuActivity.class);
+                Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
                 intent.putExtra("Notifications", notificationArray);
                 startActivity(intent);
                 finish();
