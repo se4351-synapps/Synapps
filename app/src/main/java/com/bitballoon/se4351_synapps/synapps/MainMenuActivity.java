@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 /**
  * Created by Bontavy on 9/25/2015.
  */
@@ -19,12 +21,15 @@ public class MainMenuActivity extends AppCompatActivity {
     private ImageView daily_routine_icon;
     private ImageView back_icon;
     final Context context = this;
-
+    ArrayList<Notification> notificationArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+
+        notificationArray = (ArrayList<Notification>) getIntent().getSerializableExtra("Notifications");
+
         daily_routine_icon_click();
         back_icon_click();
 
@@ -36,7 +41,8 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainMenuActivity.this, EditNotificationActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, NotificationListActivity.class);
+                intent.putExtra("Notifications", notificationArray);
                 startActivity(intent);
                 finish();
             }
@@ -50,7 +56,6 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
-
                 startActivity(intent);
                 finish();
             }
