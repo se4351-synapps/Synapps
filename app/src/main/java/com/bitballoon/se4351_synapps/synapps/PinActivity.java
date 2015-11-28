@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import static  com.bitballoon.se4351_synapps.synapps.CreatePinActivity.*;
 
 
 
@@ -64,15 +65,19 @@ public class PinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (pinNumber.getText().toString().equals("1514")) {
-                //if (pinNumber.getText().toString().equals(@string/pin_actual)) {
-                    Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
-                    startActivity(intent);
-                    finish();
+                //if(getPin().equals("")){
+                    //Toast.makeText(PinActivity.this, "No PIN has been set.", Toast.LENGTH_LONG).show();
+                    //pinNumber.setText("");
+                //}else if (pinNumber.getText().toString().equals(getPin())) {
+                        Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+                        startActivity(intent);
+                        finish();
 
-                } else {
-                    Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
-                    pinNumber.setText("");
-                }
+                    } else {
+                        Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
+                        pinNumber.setText("");
+                    }
+
             }
 
 

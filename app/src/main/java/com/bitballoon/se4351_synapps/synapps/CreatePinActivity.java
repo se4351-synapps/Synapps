@@ -18,7 +18,8 @@ import android.widget.TextView;
  * Created by Karis on 11/27/2015.
  */
 public class CreatePinActivity extends AppCompatActivity {
-    private EditText pinNumber;
+    private static EditText newpinNumber ;
+    private static String pinNum="";
     private Button makepinButton;
 
 
@@ -28,10 +29,12 @@ public class CreatePinActivity extends AppCompatActivity {
         setContentView(R.layout.create_pin);
         initializeUI();
         makePin();
+        getPin();
     }
 
     private void initializeUI() {
-        pinNumber = (EditText)findViewById(R.id.pin_number);
+        newpinNumber = (EditText)findViewById(R.id.pin_number);
+        pinNum = newpinNumber.getText().toString();
         makepinButton = (Button)findViewById(R.id.pin_button);
     }
 
@@ -44,6 +47,10 @@ public class CreatePinActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public static String getPin(){
+        return pinNum;
     }
 
 
