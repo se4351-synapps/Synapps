@@ -76,6 +76,13 @@ public class EditNotificationActivity extends AppCompatActivity {
 
         // display the current date
         updateDisplay();
+
+        // get the notification text and time from the NotificationListActivity
+        Intent intent = getIntent();
+        if (null != intent) {
+            noti_input.setText(intent.getStringExtra("notificationText"));
+            mTimeDisplay.setText(intent.getStringExtra("notificationTime"));
+        }
     }
 
     private void initiateUI(){
@@ -136,8 +143,6 @@ public class EditNotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 print_message("Canceled Notification ._.");
-                Intent intent = new Intent(EditNotificationActivity.this, MainMenuActivity.class);
-                startActivity(intent);
                 finish();
                 //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
 

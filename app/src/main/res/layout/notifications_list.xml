@@ -8,19 +8,38 @@
         android:id="@+id/notifications_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/home_button"
-        android:fadeScrollbars="false" >
+        android:fadeScrollbars="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/add_notification_layout">
     </ListView>
 
-    <ImageView
-        android:id="@+id/add_notification_button"
+    <LinearLayout
+        android:id="@+id/add_notification_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="5dp" >
+
+        <ImageView
+            android:id="@+id/add_notification_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/add_notification_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_notification_button"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="Add"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </RelativeLayout>

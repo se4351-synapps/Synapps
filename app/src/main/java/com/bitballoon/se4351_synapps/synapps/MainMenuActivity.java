@@ -42,9 +42,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMenuActivity.this, NotificationListActivity.class);
-                intent.putExtra("Notifications", notificationArray);
                 startActivity(intent);
-                finish();
             }
         });
     }
