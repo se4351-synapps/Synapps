@@ -76,6 +76,13 @@ public class EditNotificationActivity extends AppCompatActivity {
 
         // display the current date
         updateDisplay();
+
+        // get the notification text and time from the NotificationListActivity
+        Intent intent = getIntent();
+        if (null != intent) {
+            noti_input.setText(intent.getStringExtra("notificationText"));
+            mTimeDisplay.setText(intent.getStringExtra("notificationTime"));
+        }
     }
 
     private void initiateUI(){

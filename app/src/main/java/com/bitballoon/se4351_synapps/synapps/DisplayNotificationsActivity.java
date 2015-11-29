@@ -92,17 +92,16 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             Calendar cal = Calendar.getInstance();
 
             // strings for the notification text
-            String text = "Feed your cat. The food is called Fancy Feast which you can find in the kitchen in the cabinet to the right of the stove.";
-            String time = dateFormat.format(cal.getTime());
+            //String text = "Feed your cat. The food is called Fancy Feast which you can find in the kitchen in the cabinet to the right of the stove.";
+            //String time = dateFormat.format(cal.getTime());
             // sets notification data
             notificationImage.setImageResource(R.mipmap.daily_routine);
-            notificationText.setText(text);
-            notificationTime.setText(time);
+            notificationText.setText("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
+            notificationTime.setText((int) (1 + Math.random() * 12) + ":" + (int) (Math.random() * 59) + " PM");
             // creates notification and adds to arraylist
-            Notification notification = new Notification(notificationImage, notificationText, notificationTime);
-            notificationArray.add(notification);
+            notificationArray.add(new Notification(notificationImage, notificationText, notificationTime));
+            notificationAdapter.notifyDataSetChanged();
         }
-        notificationAdapter.notifyDataSetChanged();
     }
 
     // methods shows detailed view of notification
