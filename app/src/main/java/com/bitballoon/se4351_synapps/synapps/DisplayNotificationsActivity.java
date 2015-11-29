@@ -68,7 +68,6 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
                 Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
                 intent.putExtra("Notifications", notificationArray);
                 startActivity(intent);
-                finish();
             }
         });
     }

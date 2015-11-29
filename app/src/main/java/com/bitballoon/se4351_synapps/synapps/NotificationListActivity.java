@@ -87,7 +87,6 @@ public class NotificationListActivity extends AppCompatActivity {
                 intent.putExtra("notificationText", notificationText);
                 intent.putExtra("notificationTime", notificationTime);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -99,7 +98,6 @@ public class NotificationListActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(NotificationListActivity.this, EditNotificationActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

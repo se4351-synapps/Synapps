@@ -43,7 +43,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainMenuActivity.this, NotificationListActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
