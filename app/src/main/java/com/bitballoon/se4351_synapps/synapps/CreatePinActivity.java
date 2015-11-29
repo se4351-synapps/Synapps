@@ -10,6 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.ArrayList;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +28,8 @@ import android.widget.TextView;
  */
 public class CreatePinActivity extends AppCompatActivity {
     private static EditText newpinNumber ;
-    private static String pinNum="";
+    public  static final String KEY_PIN="pin number";
+    private static String pinNum;
     private Button makepinButton;
 
 
@@ -42,8 +52,11 @@ public class CreatePinActivity extends AppCompatActivity {
         makepinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreatePinActivity.this, PinActivity.class);
-                startActivity(intent);
+                Intent pn = new Intent(CreatePinActivity.this, PinActivity.class);
+                pn.putExtra(KEY_PIN, pinNum);
+                startActivity(pn);
+//                Intent intent = new Intent(CreatePinActivity.this, PinActivity.class);
+//                startActivity(intent);
                 finish();
             }
         });

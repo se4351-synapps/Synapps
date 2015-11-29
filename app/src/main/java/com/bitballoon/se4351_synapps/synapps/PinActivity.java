@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import static  com.bitballoon.se4351_synapps.synapps.CreatePinActivity.*;
+import static com.bitballoon.se4351_synapps.synapps.CreatePinActivity.KEY_PIN;
 
 
 
@@ -33,6 +34,7 @@ public class PinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_pin);
+
         initializeUI();
         resumeApp();
         logIn();
@@ -64,11 +66,20 @@ public class PinActivity extends AppCompatActivity {
         pinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pinNumber.getText().toString().equals("1514")) {
-                //if(getPin().equals("")){
-                    //Toast.makeText(PinActivity.this, "No PIN has been set.", Toast.LENGTH_LONG).show();
-                    //pinNumber.setText("");
-                //}else if (pinNumber.getText().toString().equals(getPin())) {
+//                if (pinNumber.getText().toString().equals("1514")) {
+//
+//                    Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//
+//                 }else{
+//                    Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
+//                    pinNumber.setText("");
+//                }
+                Intent rp = getIntent();
+                if(null != rp){
+                    activePin= rp.getStringExtra(KEY_PIN);
+                    if (pinNumber.getText().toString().equals(activePin)) {
                         Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
                         startActivity(intent);
                         finish();
@@ -77,6 +88,12 @@ public class PinActivity extends AppCompatActivity {
                         Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
                         pinNumber.setText("");
                     }
+
+
+                }else{
+                    Toast.makeText(PinActivity.this, "No PIN has been set.", Toast.LENGTH_LONG).show();
+                    pinNumber.setText("");
+                }
 
             }
 
