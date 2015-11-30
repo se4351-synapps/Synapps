@@ -1,6 +1,7 @@
 package com.bitballoon.se4351_synapps.synapps;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,50 +15,50 @@ import java.util.ArrayList;
 /**
  * Created by Bontavy on 11/8/2015.
  */
-public class NotificationAdapter extends BaseAdapter {
-    private Context context;
+public class NotificationAdapter extends ArrayAdapter<Notification> {
     private ArrayList<Notification> notifications;
     private LayoutInflater layoutInflater;
 
     public NotificationAdapter(Context context, ArrayList<Notification> notifications) {
-        this.context = context;
+        super(context, 0, notifications);
         this.notifications = notifications;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
-    public int getCount() {
-        return notifications.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
-        //Notification notification = getItem(position);
+        View view = convertView;
+        ViewHolder holder;
+
         // Check if an existing view is being reused, otherwise inflate the view
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.notification_list_row, parent, false);
-        }
-        // Lookup view for data population
-        ImageView notificationImage = (ImageView) convertView.findViewById(R.id.notification_image);
-        TextView notificationText = (TextView) convertView.findViewById(R.id.notification_text);
-        TextView notificationTime = (TextView) convertView.findViewById(R.id.notification_time);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.notification_list_row, null);
+
+            // cache view fields into the holder
+            holder = new ViewHolder();
+            holder.notificationImage = (ImageView) view.findViewById(R.id.notification_image);
+            holder.notificationText = (TextView) view.findViewById(R.id.notification_text);
+            holder.notificationTime = (TextView) view.findViewById(R.id.notification_time);
+            // associate the holder with the view for later lookup
+            view.setTag(holder);
+        } else
+            // view already exists, get the holder instance from the view
+            holder = (ViewHolder) view.getTag();
 
         // Populate the data into the template view using the data object
-        notificationImage.setImageResource(R.mipmap.daily_routine);
-        notificationText.setText((CharSequence) notifications.get(position).getNotification_text());
-        notificationTime.setText(notifications.get(position).getActivity_time());
+        for (int i = 0; i < notifications.size(); i++) {
+            holder.notificationImage.setImageResource(R.mipmap.daily_routine);
+            holder.notificationText.setText((CharSequence) notifications.get(i).getNotification_text());
+            holder.notificationTime.setText(notifications.get(i).getActivity_time());
+        }
+
         // Return the completed view to render on screen
-        return convertView;
+        return view;
+    }
+
+    static class ViewHolder {
+        ImageView notificationImage;
+        TextView notificationText;
+        TextView notificationTime;
     }
 }
