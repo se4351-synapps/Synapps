@@ -86,8 +86,9 @@ public class PinActivity extends AppCompatActivity {
                         finish();
 
                     } else {
+                       pinNumber.setText("");
                         Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
-                        pinNumber.setText("");
+
                     }
 
 
