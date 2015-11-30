@@ -1,37 +1,31 @@
 package com.bitballoon.se4351_synapps.synapps;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.List;
 
 /**
  * Created by Bontavy on 11/6/2015.
@@ -43,7 +37,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     ImageView notificationImage;
     TextView notificationText;
     TextView notificationTime;
-    ArrayList<Notification> notificationArray;
+    ArrayList<Notification> notificationArrayList;
 
     // home button
     ImageView homeButton;
@@ -66,7 +60,6 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
-                intent.putExtra("Notifications", notificationArray);
                 startActivity(intent);
             }
         });
@@ -75,14 +68,16 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     // method sets the adapter for the listview of notifications
     private void setNotificationAdapter() {
         notificationsListView = (ListView) findViewById(R.id.notifications_listview);
-        notificationArray = new ArrayList<Notification>();
+        notificationArrayList = new ArrayList<Notification>();
 
-        notificationAdapter = new NotificationAdapter(this, notificationArray);
+        notificationAdapter = new NotificationAdapter(this, notificationArrayList);
         notificationsListView.setAdapter(notificationAdapter);
 
         notificationImage = new ImageView(this);
         notificationText = new TextView(this);
         notificationTime = new TextView(this);
+
+        notificationImage.setImageResource(R.mipmap.daily_routine);
 
         // loop to make list of notifications
         for (int i = 0; i < 5; i++) {
@@ -98,9 +93,17 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             notificationText.setText("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
             notificationTime.setText((int) (1 + Math.random() * 12) + ":" + (int) (Math.random() * 59) + " PM");
             // creates notification and adds to arraylist
-            notificationArray.add(new Notification(notificationImage, notificationText, notificationTime));
+            notificationArrayList.add(i, new Notification(notificationImage, notificationText, notificationTime));
             notificationAdapter.notifyDataSetChanged();
         }
+
+//        notificationText.setText("Notification 1: Because he’s the hero Gotham deserves, but not the one it needs right now. So we’ll hunt him because he can take it. Because he’s not our hero. He’s a silent guardian. A watchful protector. A dark knight.");
+//        notificationTime.setText("9:30 PM");
+//        notificationArrayList.add(new Notification(notificationImage, notificationText, notificationTime));
+//
+//        notificationText.setText("Notification 2: You either die a hero or you live long enough to see yourself become the villain.");
+//        notificationTime.setText("12:00 AM");
+//        notificationArrayList.add(new Notification(notificationImage, notificationText, notificationTime));
     }
 
     // methods shows detailed view of notification
@@ -113,20 +116,34 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
 
         // when notification in listview is clicked
         notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            AlertDialog alertDialog;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // set size of notification image in the alertdialog
-                ImageView notificationImage = notificationArray.get(position).getNotification_image();
+                ImageView notificationImage = notificationArrayList.get(position).getNotification_image();
                 notificationImage.setMinimumWidth(DESIRED_WIDTH);
                 notificationImage.setMinimumHeight(DESIRED_HEIGHT);
                 // add notification info and buttons in the alertdialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setMessage(notificationArray.get(position).getNotification_text() +
-                        "\n\nComplete Task at: " + notificationArray.get(position).getActivity_time())
+                builder.setMessage(notificationArrayList.get(position).getNotification_text() +
+                        "\n\nComplete Task at: " + notificationArrayList.get(position).getActivity_time())
                         .setView(notificationImage)
-                        .setNegativeButton("Close", null)
-                        .setPositiveButton("Confirm Completion", null);
-                AlertDialog alertDialog = builder.create();
+                        .setNegativeButton("Close",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                        alertDialog.dismiss();
+                                    }
+                                })
+                        .setPositiveButton("Confirm Completion",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        Toast.makeText(DisplayNotificationsActivity.this, "Notification completed", Toast.LENGTH_LONG).show();
+                                        alertDialog.dismiss();
+                                    }
+                                });
+
+                alertDialog = builder.create();
                 alertDialog.show();
 
                 // set size of alertdialog to fill screen
