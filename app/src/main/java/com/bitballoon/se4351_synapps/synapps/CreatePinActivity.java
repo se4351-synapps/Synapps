@@ -27,7 +27,7 @@ import android.widget.TextView;
  * Created by Karis on 11/27/2015.
  */
 public class CreatePinActivity extends AppCompatActivity {
-    private static EditText newpinNumber ;
+    private EditText newpinNumber;
     public  static final String KEY_PIN="pin number";
     private static String pinNum;
     private Button makepinButton;
@@ -44,7 +44,6 @@ public class CreatePinActivity extends AppCompatActivity {
 
     private void initializeUI() {
         newpinNumber = (EditText)findViewById(R.id.pin_number);
-        pinNum = newpinNumber.getText().toString();
         makepinButton = (Button)findViewById(R.id.pin_button);
     }
 
@@ -52,6 +51,7 @@ public class CreatePinActivity extends AppCompatActivity {
         makepinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pinNum = newpinNumber.getText().toString();
                 Intent pn = new Intent(CreatePinActivity.this, PinActivity.class);
                 pn.putExtra(KEY_PIN, pinNum);
                 startActivity(pn);
