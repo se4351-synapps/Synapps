@@ -32,7 +32,6 @@ public class CreatePinActivity extends AppCompatActivity {
     public  static final String KEY_PIN="pin number";
     private static String pinNum;
     private Button makepinButton;
-
     String notificationData = "";
 
     @Override
