@@ -196,8 +196,7 @@
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_below="@+id/repeat_field_input"
-            android:layout_alignLeft="@+id/timeDisplay"
-            android:layout_alignStart="@+id/timeDisplay" />
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/cancel_button"
