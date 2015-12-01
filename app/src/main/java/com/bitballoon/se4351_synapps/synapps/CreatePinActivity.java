@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,11 +33,16 @@ public class CreatePinActivity extends AppCompatActivity {
     private static String pinNum;
     private Button makepinButton;
 
+    String notificationData = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_pin);
+        Intent intent = getIntent();
+        notificationData = intent.getStringExtra("notificationData");
+        Log.d("notificationData", notificationData);
+
         initializeUI();
         makePin();
         getPin();

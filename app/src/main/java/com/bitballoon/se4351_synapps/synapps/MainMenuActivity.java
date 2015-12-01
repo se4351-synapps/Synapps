@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.view.Menu;
@@ -22,13 +23,17 @@ public class MainMenuActivity extends AppCompatActivity {
     private ImageView back_icon;
     final Context context = this;
     ArrayList<Notification> notificationArray;
+    String notificationData = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
-        notificationArray = (ArrayList<Notification>) getIntent().getSerializableExtra("Notifications");
+        Intent intent = getIntent();
+        notificationData = intent.getStringExtra("notificationData");
+
+        Log.d("notificationData", notificationData);
 
         daily_routine_icon_click();
         back_icon_click();
@@ -42,6 +47,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMenuActivity.this, CalendarActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
             }
         });
@@ -54,6 +60,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
                 finish();
             }
