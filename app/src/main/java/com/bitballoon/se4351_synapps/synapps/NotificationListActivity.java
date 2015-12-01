@@ -29,6 +29,7 @@ public class NotificationListActivity extends AppCompatActivity {
     TextView notificationTime;
     ArrayList<Notification> notificationArrayList;
     String notificationData = "";
+    String date_data = "";
 
     // add notification button
     LinearLayout addNotificationButton;
@@ -40,6 +41,7 @@ public class NotificationListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        date_data = intent.getStringExtra("date_sel");
 
         Log.d("notificationData", notificationData);
         setNotificationAdapter();
@@ -91,6 +93,7 @@ public class NotificationListActivity extends AppCompatActivity {
                 Intent intent = new Intent(NotificationListActivity.this, EditNotificationActivity.class);
                 intent.putExtra("notificationText", notificationText);
                 intent.putExtra("notificationTime", notificationTime);
+                intent.putExtra("date_data", date_data);
                 startActivity(intent);
             }
         });
@@ -102,6 +105,7 @@ public class NotificationListActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(NotificationListActivity.this, EditNotificationActivity.class);
+                intent.putExtra("date_data", date_data);
                 startActivity(intent);
             }
         });
