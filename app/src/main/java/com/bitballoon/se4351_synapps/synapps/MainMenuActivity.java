@@ -46,7 +46,7 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainMenuActivity.this, NotificationListActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, CalendarActivity.class);
                 intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
             }
