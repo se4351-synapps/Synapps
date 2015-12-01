@@ -30,11 +30,16 @@ public class PinActivity extends AppCompatActivity {
     private Button resumeAppButton;
     private String activePin="";
 
+    String notificationData = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_pin);
+
+        Intent intent = getIntent();
+        notificationData = intent.getStringExtra("notificationData");
+        Log.d("notificationData", notificationData);
 
         initializeUI();
         resumeApp();
@@ -49,7 +54,6 @@ public class PinActivity extends AppCompatActivity {
         newPinButton = (Button)findViewById(R.id.new_pin_button);
         pinButton = (Button)findViewById(R.id.pin_button);
         resumeAppButton = (Button)findViewById(R.id.resume_to_app);
-
     }
 
     private void resumeApp() {
@@ -57,6 +61,7 @@ public class PinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
                 finish();
             }
@@ -83,6 +88,7 @@ public class PinActivity extends AppCompatActivity {
 
                     if (pinNumber.getText().toString().equals(activePin)) {
                         Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+                        intent.putExtra("notificationData", notificationData);
                         startActivity(intent);
                         finish();
 

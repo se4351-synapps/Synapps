@@ -5,6 +5,9 @@ package com.bitballoon.se4351_synapps.synapps;
  */
 
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +16,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import java.util.Calendar;
 import android.app.Activity;
+import android.content.res.Resources;
+import android.support.v4.app.NotificationCompat;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.view.Menu;
@@ -131,11 +136,45 @@ public class EditNotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //print_message("Notification Created");
+                convert_time();
                 print_notification(noti_input.getText().toString(), mHour, mMinute);
+                showNotification(noti_input.getText().toString(), mHour, mMinute, mAMPM, "12/01/15");
                 //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
 
             }
         });
+    }
+
+    public void convert_time(){
+
+        if (mHour >= 12) {
+            mAMPM = "PM";
+            if(mHour != 12){
+                mHour = mHour - 12;
+            }
+        }
+        else{
+            if(mHour == 0){
+                mHour = 12;
+            }
+            mAMPM = "AM";
+        }
+    }
+
+    public void showNotification(String noti, int hour, int min, String ampm, String date) {
+        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, DisplayNotificationsActivity.class), 0);
+        Resources r = getResources();
+        Notification notification = new NotificationCompat.Builder(this)
+                .setTicker("Ticker")
+                .setSmallIcon(android.R.drawable.ic_menu_report_image)
+                .setContentTitle("Date Entered: " + date)
+                .setContentText( "Time: " + hour + ":" + min + " " + ampm + " " + noti)
+                .setContentIntent(pi)
+                .setAutoCancel(true)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notification);
     }
 
     private void cancelNotificationBtn() {
@@ -151,19 +190,6 @@ public class EditNotificationActivity extends AppCompatActivity {
     }
 
     public void print_notification(String str, int hour, int min) {
-
-        if (hour >= 12) {
-            mAMPM = "PM";
-            if(hour != 12){
-                hour = hour - 12;
-            }
-        }
-        else{
-            if(hour == 0){
-                hour = 12;
-            }
-            mAMPM = "AM";
-        }
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);

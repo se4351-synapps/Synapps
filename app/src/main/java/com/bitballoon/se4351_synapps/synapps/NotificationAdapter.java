@@ -32,7 +32,7 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.notification_list_row, null);
+            view = layoutInflater.inflate(R.layout.notification_list_row, parent, false);
 
             // cache view fields into the holder
             holder = new ViewHolder();
@@ -46,11 +46,10 @@ public class NotificationAdapter extends ArrayAdapter<Notification> {
             holder = (ViewHolder) view.getTag();
 
         // Populate the data into the template view using the data object
-        for (int i = 0; i < notifications.size(); i++) {
-            holder.notificationImage.setImageResource(R.mipmap.daily_routine);
-            holder.notificationText.setText((CharSequence) notifications.get(i).getNotification_text());
-            holder.notificationTime.setText(notifications.get(i).getActivity_time());
-        }
+        Notification notification = notifications.get(position);
+        holder.notificationImage.setImageResource(R.mipmap.daily_routine);
+        holder.notificationText.setText(notification.getNotification_text());
+        holder.notificationTime.setText(notification.getActivity_time());
 
         // Return the completed view to render on screen
         return view;

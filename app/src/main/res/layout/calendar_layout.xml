@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="385dp"
+        android:id="@+id/datePicker"
+        android:layout_gravity="center_horizontal"
+        android:calendarViewShown="false"
+        android:headerBackground="#0091ff"
+        android:layout_marginTop="20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/cancel_calendar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button_red"
+        android:text="Cancel"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/get_calendar_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:text="Get"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/continue_calendar_button"
+            android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/continue_calendar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button_green"
+        android:text="Continue"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        />
+
+    </RelativeLayout>
+
+</LinearLayout>
