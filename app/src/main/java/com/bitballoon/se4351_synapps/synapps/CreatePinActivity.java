@@ -1,5 +1,6 @@
 package com.bitballoon.se4351_synapps.synapps;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import java.util.ArrayList;
@@ -38,6 +41,7 @@ public class CreatePinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_pin);
+
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
         Log.d("notificationData", notificationData);
@@ -45,6 +49,8 @@ public class CreatePinActivity extends AppCompatActivity {
         initializeUI();
         makePin();
         getPin();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private void initializeUI() {

@@ -25,6 +25,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -85,12 +87,12 @@ public class EditNotificationActivity extends AppCompatActivity {
 
         // get the notification text and time from the NotificationListActivity
         Intent intent = getIntent();
-        if (null != intent) {
-            noti_input.setText(intent.getStringExtra("notificationText"));
-            mTimeDisplay.setText(intent.getStringExtra("notificationTime"));
-        }
+        noti_input.setText(intent.getStringExtra("notificationText"));
+        mTimeDisplay.setText(intent.getStringExtra("notificationTime"));
         // date from calendar
         date_data = intent.getStringExtra("date_data");
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private void initiateUI(){

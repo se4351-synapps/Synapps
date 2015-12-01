@@ -1,5 +1,7 @@
 package com.bitballoon.se4351_synapps.synapps;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +49,8 @@ public class PinActivity extends AppCompatActivity {
         resumeApp();
         logIn();
         makePin();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private void initializeUI() {
@@ -135,7 +141,4 @@ public class PinActivity extends AppCompatActivity {
 
         }
     }
-
-
-
 }
