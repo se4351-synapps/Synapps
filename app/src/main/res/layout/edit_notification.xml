@@ -14,6 +14,7 @@
         android:id="@+id/date_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/date_field"
         android:textColor="@color/synapps_blue"
         android:textSize="25sp"
@@ -92,15 +93,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/repeat_field_input"
-        android:layout_below="@+id/repeat_field"
-        android:layout_alignRight="@+id/save_button"
-        android:layout_alignEnd="@+id/save_button">
+        android:layout_below="@+id/repeat_field" >
 
         <CheckBox android:id="@+id/weekday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="Weekday"
             android:onClick="onCheckBoxClick"/>
 
@@ -108,7 +106,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/weekday_btn"
             android:text="Weekend"
             android:onClick="onCheckBoxClick"/>
@@ -116,17 +113,15 @@
         <CheckBox android:id="@+id/monday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Monday"
             android:onClick="onCheckBoxClick"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/thursday_btn"
-            android:layout_alignStart="@+id/thursday_btn" />
+            android:layout_toRightOf="@id/weekend_btn" />
 
         <CheckBox android:id="@+id/tuesday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_below="@id/weekday_btn"
             android:text="Tuesday"
             android:onClick="onCheckBoxClick"/>
@@ -137,16 +132,15 @@
             android:text="Wednesday"
             android:onClick="onCheckBoxClick"
             android:layout_below="@+id/weekend_btn"
-            android:layout_alignLeft="@+id/saturday_btn"
-            android:layout_alignStart="@+id/saturday_btn" />
+            android:layout_toRightOf="@id/tuesday_btn"
+            android:layout_alignLeft="@id/weekend_btn" />
 
         <CheckBox android:id="@+id/thursday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_below="@id/monday_btn"
             android:layout_toRightOf="@id/wednesday_btn"
+            android:layout_alignLeft="@id/monday_btn"
             android:text="Thursday"
             android:onClick="onCheckBoxClick"/>
 
@@ -154,7 +148,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_below="@id/tuesday_btn"
             android:text="Friday"
             android:onClick="onCheckBoxClick"/>
@@ -164,18 +157,18 @@
             android:layout_height="wrap_content"
             android:text="Saturday"
             android:onClick="onCheckBoxClick"
+            android:layout_toRightOf="@id/friday_btn"
             android:layout_below="@id/wednesday_btn"
-            android:layout_alignLeft="@+id/weekend_btn"
-            android:layout_alignStart="@+id/weekend_btn" />
+            android:layout_alignLeft="@+id/weekend_btn" />
 
         <CheckBox android:id="@+id/sunday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sunday"
             android:onClick="onCheckBoxClick"
+            android:layout_toRightOf="@id/saturday_btn"
             android:layout_below="@id/thursday_btn"
-            android:layout_alignLeft="@+id/thursday_btn"
-            android:layout_alignStart="@+id/thursday_btn" />
+            android:layout_alignLeft="@+id/thursday_btn" />
     </RelativeLayout>
 
 
