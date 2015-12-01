@@ -49,7 +49,9 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
+                //Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
+                //TODO testing go to calendar instead
+                Intent intent = new Intent(MainMenuActivity.this, CalendarActivity.class);
 
                 startActivity(intent);
                 finish();

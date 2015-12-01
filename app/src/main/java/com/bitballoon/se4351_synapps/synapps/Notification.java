@@ -5,6 +5,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 /**
  * Created by Bontavy on 11/8/2015.
  */
@@ -14,6 +16,14 @@ public class Notification {
     ImageView notification_image;
     String notification_text = "";
     String activity_time = "";
+    int type;
+    /*
+        0: regular
+        1: meal
+        2: medication
+        3: finance
+    */
+
     boolean monday;
     boolean tuesday;
     boolean wednesday;
@@ -152,6 +162,55 @@ public class Notification {
 
     public boolean getWeekend() {
         return weekend;
+    }
+
+    public void setType(int type){
+        this.type = type;
+    }
+
+    public int getType(){
+        return type;
+    }
+
+    public static int getNotificationCountOnDay(int month, int date, int year, int filter){
+        //TODO make data structure to manage all notifications
+        //testing dummy notifications
+        Notification[] notifications = new Notification[3];
+        notifications[0] = new Notification(null, "test", "test", true, false, false, false, false, false, false, false, false);
+        notifications[0].setType(1);
+        notifications[1] = new Notification(null, "test", "test", false, true, false, false, false, false, false, false, false);
+        notifications[1].setType(2);
+        notifications[2] = new Notification(null, "test", "test", false, false, false, false, false, false, false, true, false);
+        notifications[2].setType(3);
+
+        Calendar c = Calendar.getInstance();
+        c.set(year, month - 1, date);
+        int count = 0;
+
+        for(Notification n : notifications){
+            //check filter
+            if(filter != -1 && filter != n.getType())
+                continue;
+
+            //check day of week
+            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+            if(
+                ((n.getWeekend() || n.getSunday()) && dayOfWeek == Calendar.SUNDAY) ||
+                ((n.getWeekday() || n.getMonday()) && dayOfWeek == Calendar.MONDAY) ||
+                ((n.getWeekday() || n.getTuesday()) && dayOfWeek == Calendar.TUESDAY) ||
+                ((n.getWeekday() || n.getWednesday()) && dayOfWeek == Calendar.WEDNESDAY) ||
+                ((n.getWeekday() || n.getThursday()) && dayOfWeek == Calendar.THURSDAY) ||
+                ((n.getWeekday() || n.getFriday()) && dayOfWeek == Calendar.FRIDAY) ||
+                ((n.getWeekend() || n.getSaturday()) && dayOfWeek == Calendar.SATURDAY))
+            {
+                count++;
+                continue;
+            }
+
+            //TODO support for notifications on a specific day?
+        }
+
+        return count;
     }
 }
 

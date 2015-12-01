@@ -21,4 +21,13 @@
     <!--Edit Notification-->
     <string name="date_field">Date Placeholder Label</string>
     <string name="noti_field">Notification</string>
+
+    <!--Notification Type-->
+    <string-array name="notification_types_spinner">
+        <item>All Notifications</item>
+        <item>Regular Notifications</item>
+        <item>Meal Notifications</item>
+        <item>Medication Notifications</item>
+        <item>Finance Notifications</item>
+    </string-array>
 </resources>
