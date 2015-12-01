@@ -32,7 +32,6 @@ public class CreatePinActivity extends AppCompatActivity {
     public  static final String KEY_PIN="pin number";
     private static String pinNum;
     private Button makepinButton;
-
     String notificationData = "";
 
     @Override
@@ -59,6 +58,7 @@ public class CreatePinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pinNum = newpinNumber.getText().toString();
                 Intent pn = new Intent(CreatePinActivity.this, PinActivity.class);
+                pn.putExtra("notificationData", notificationData);
                 pn.putExtra(KEY_PIN, pinNum);
                 startActivity(pn);
 //                Intent intent = new Intent(CreatePinActivity.this, PinActivity.class);
