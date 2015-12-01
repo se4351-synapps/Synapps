@@ -14,10 +14,15 @@ public class CalendarActivity extends AppCompatActivity {
     private Button continue_button;
     private Button cancel_button;
 
+    String notificationData = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_layout);
+
+        Intent intent = getIntent();
+        notificationData = intent.getStringExtra("notificationData");
 
         initiateUI();
         continueCalendarBtn();
@@ -36,6 +41,7 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, NotificationListActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
             }
         });
@@ -47,6 +53,7 @@ public class CalendarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, MainMenuActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

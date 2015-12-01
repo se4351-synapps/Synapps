@@ -72,7 +72,7 @@ public class NotificationListActivity extends AppCompatActivity {
             notificationText.setText(text);
             notificationTime.setText(time);
             // creates notification and adds to arraylist
-            notificationArrayList.add(i, new Notification(notificationImage, notificationText, notificationTime));
+            notificationArrayList.add(i, new Notification(notificationImage, text, time));
             notificationAdapter.notifyDataSetChanged();
             Log.d("text", text);
             Log.d("time", time);
