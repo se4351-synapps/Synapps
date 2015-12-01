@@ -83,22 +83,16 @@ public class PinActivity extends AppCompatActivity {
 //                    pinNumber.setText("");
 //                }
                 Intent rp = getIntent();
-                if(null != rp){
-                    activePin= rp.getStringExtra(KEY_PIN);
-                    if (pinNumber.getText().toString().equals(activePin)) {
-                        Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
-                        intent.putExtra("notificationData", notificationData);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                       pinNumber.setText("");
-                        Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
-
-                    }
-
-
+                activePin= rp.getStringExtra(KEY_PIN);
+                if (pinNumber.getText().toString().equals(activePin)) {
+                    Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
+                    intent.putExtra("notificationData", notificationData);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    pinNumber.setText("");
+                    Toast.makeText(PinActivity.this, R.string.invalid_pin, Toast.LENGTH_LONG).show();
                 }
-
             }
 
 
@@ -109,6 +103,7 @@ public class PinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PinActivity.this, CreatePinActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
                 finish();
             }
