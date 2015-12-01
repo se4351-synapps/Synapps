@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,10 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by Bontavy on 11/27/2015.
@@ -29,7 +27,8 @@ public class NotificationListActivity extends AppCompatActivity {
     ImageView notificationImage;
     TextView notificationText;
     TextView notificationTime;
-    ArrayList<Notification> notificationArray;
+    ArrayList<Notification> notificationArrayList;
+    String notificationData = "";
 
     // add notification button
     LinearLayout addNotificationButton;
@@ -39,6 +38,10 @@ public class NotificationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications_list);
 
+        Intent intent = getIntent();
+        notificationData = intent.getStringExtra("notificationData");
+
+        Log.d("notificationData", notificationData);
         setNotificationAdapter();
         goToEditNotification();
     }
@@ -46,31 +49,33 @@ public class NotificationListActivity extends AppCompatActivity {
     // method sets the adapter for the listview of notifications
     private void setNotificationAdapter() {
         notificationsListView = (ListView) findViewById(R.id.notifications_listview);
-        notificationArray = new ArrayList<Notification>();
+        notificationArrayList = new ArrayList<Notification>();
 
-        notificationAdapter = new NotificationAdapter(this, notificationArray);
+        notificationAdapter = new NotificationAdapter(this, notificationArrayList);
         notificationsListView.setAdapter(notificationAdapter);
 
         notificationImage = new ImageView(this);
         notificationText = new TextView(this);
         notificationTime = new TextView(this);
 
+        notificationImage.setImageResource(R.mipmap.daily_routine);
+
+        String[] notifications = notificationData.split(";");
+
         // loop to make list of notifications
         for (int i = 0; i < 5; i++) {
-            DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-            //get current date time with Calendar()
-            Calendar cal = Calendar.getInstance();
-
             // strings for the notification text
-            //String text = "Feed your cat. The food is called Fancy Feast which you can find in the kitchen in the cabinet to the right of the stove.";
-            //String time = dateFormat.format(cal.getTime());
+            String text = new String(notifications[i].substring(0, notifications[i].indexOf(',')));
+            String time = new String(notifications[i].substring(notifications[i].indexOf(',') + 1, notifications[i].length()));
+
             // sets notification data
-            notificationImage.setImageResource(R.mipmap.daily_routine);
-            notificationText.setText("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
-            notificationTime.setText((int) (1 + Math.random() * 12) + ":" + (int) (Math.random() * 59) + " PM");
+            notificationText.setText(text);
+            notificationTime.setText(time);
             // creates notification and adds to arraylist
-            notificationArray.add(new Notification(notificationImage, notificationText, notificationTime));
+            notificationArrayList.add(i, new Notification(notificationImage, notificationText, notificationTime));
             notificationAdapter.notifyDataSetChanged();
+            Log.d("text", text);
+            Log.d("time", time);
         }
     }
 
@@ -80,8 +85,8 @@ public class NotificationListActivity extends AppCompatActivity {
         notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String notificationText = notificationArray.get(position).getNotification_text();
-                String notificationTime = notificationArray.get(position).getActivity_time();
+                String notificationText = notificationArrayList.get(position).getNotification_text();
+                String notificationTime = notificationArrayList.get(position).getActivity_time();
 
                 Intent intent = new Intent(NotificationListActivity.this, EditNotificationActivity.class);
                 intent.putExtra("notificationText", notificationText);

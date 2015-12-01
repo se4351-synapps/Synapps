@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * Created by Bontavy on 11/8/2015.
  */
-public class Notification implements Parcelable {
+public class Notification {
     //int activity_id=0;
 
     private ImageView notification_image;
@@ -54,50 +54,6 @@ public class Notification implements Parcelable {
         this.weekend=weekend;
 
     }
-
-    protected Notification(Parcel in) {
-        type = in.readInt();
-        monday = in.readByte() != 0;
-        tuesday = in.readByte() != 0;
-        wednesday = in.readByte() != 0;
-        thursday = in.readByte() != 0;
-        friday = in.readByte() != 0;
-        saturday = in.readByte() != 0;
-        sunday = in.readByte() != 0;
-        weekday = in.readByte() != 0;
-        weekend = in.readByte() != 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(type);
-        dest.writeByte((byte) (monday ? 1 : 0));
-        dest.writeByte((byte) (tuesday ? 1 : 0));
-        dest.writeByte((byte) (wednesday ? 1 : 0));
-        dest.writeByte((byte) (thursday ? 1 : 0));
-        dest.writeByte((byte) (friday ? 1 : 0));
-        dest.writeByte((byte) (saturday ? 1 : 0));
-        dest.writeByte((byte) (sunday ? 1 : 0));
-        dest.writeByte((byte) (weekday ? 1 : 0));
-        dest.writeByte((byte) (weekend ? 1 : 0));
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Notification> CREATOR = new Creator<Notification>() {
-        @Override
-        public Notification createFromParcel(Parcel in) {
-            return new Notification(in);
-        }
-
-        @Override
-        public Notification[] newArray(int size) {
-            return new Notification[size];
-        }
-    };
 
     public void setNotification_image(ImageView notification_image){
         this.notification_image=notification_image;

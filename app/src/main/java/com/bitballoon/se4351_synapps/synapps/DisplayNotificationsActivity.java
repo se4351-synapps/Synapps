@@ -38,6 +38,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     TextView notificationText;
     TextView notificationTime;
     ArrayList<Notification> notificationArrayList;
+    String notificationData = "";
 
     // home button
     ImageView homeButton;
@@ -58,8 +59,8 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
+                intent.putExtra("notificationData", notificationData);
                 startActivity(intent);
             }
         });
@@ -86,15 +87,18 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             Calendar cal = Calendar.getInstance();
 
             // strings for the notification text
-            //String text = "Feed your cat. The food is called Fancy Feast which you can find in the kitchen in the cabinet to the right of the stove.";
-            //String time = dateFormat.format(cal.getTime());
+            String text = new String("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
+            String time = new String(dateFormat.format(cal.getTime()));
             // sets notification data
-            notificationImage.setImageResource(R.mipmap.daily_routine);
-            notificationText.setText("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
-            notificationTime.setText((int) (1 + Math.random() * 12) + ":" + (int) (Math.random() * 59) + " PM");
+            notificationText.setText(text);
+            notificationTime.setText(time);
             // creates notification and adds to arraylist
             notificationArrayList.add(i, new Notification(notificationImage, notificationText, notificationTime));
             notificationAdapter.notifyDataSetChanged();
+
+            notificationData += text + "," + time + ";";
+
+            Log.d("notificationData", notificationData);
         }
 
 //        notificationText.setText("Notification 1: Because he’s the hero Gotham deserves, but not the one it needs right now. So we’ll hunt him because he can take it. Because he’s not our hero. He’s a silent guardian. A watchful protector. A dark knight.");
