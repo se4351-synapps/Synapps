@@ -12,22 +12,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:layout_centerHorizontal="true"
             android:text="@string/date_field"
             android:textColor="@color/synapps_blue"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/noti_field"
+            android:layout_alignStart="@+id/noti_field" />
 
         <TextView
             android:id="@+id/noti_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/date_field"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="@string/noti_field"
             android:textColor="@color/synapps_blue"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:layout_below="@+id/date_field"
+            android:layout_alignLeft="@+id/noti_field_input"
+            android:layout_alignStart="@+id/noti_field_input" />
 
         <EditText
             android:id="@+id/noti_field_input"
@@ -67,7 +68,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Current Time Label"
-            android:layout_marginTop="10dp"
             android:textColor="@color/synapps_blue"
             android:textSize="20sp"
             android:layout_below="@+id/pickTime"
@@ -88,10 +88,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/repeat_field"
-            android:layout_marginTop="10dp"
             android:id="@+id/repeat_field_input"
-            >
+            android:layout_below="@+id/repeat_field"
+            android:layout_alignRight="@+id/save_button"
+            android:layout_alignEnd="@+id/save_button">
 
             <CheckBox android:id="@+id/weekday_btn"
                 android:layout_width="wrap_content"
@@ -182,20 +182,18 @@
             android:id="@+id/img_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/repeat_field_input"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="Image"
             android:textColor="@color/synapps_blue"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:layout_below="@+id/repeat_field_input"
+            android:layout_alignLeft="@+id/cancel_button"
+            android:layout_alignStart="@+id/cancel_button" />
 
         <Button android:id="@+id/img_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Upload Image "
             android:background="@drawable/rounded_button"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_below="@+id/img_field"
