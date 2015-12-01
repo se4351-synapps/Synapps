@@ -38,6 +38,7 @@ public class EditNotificationActivity extends AppCompatActivity {
     /** Called when the activity is first created. */
     private TextView mTimeDisplay;
     private Button mPickTime;
+    private TextView mDateLabel;
 
     private int mHour;
     private int mMinute;
@@ -69,6 +70,7 @@ public class EditNotificationActivity extends AppCompatActivity {
         // capture our View elements
         mTimeDisplay = (TextView) findViewById(R.id.timeDisplay);
         mPickTime = (Button) findViewById(R.id.pickTime);
+        mDateLabel = (TextView) findViewById(R.id.date_field);
 
         // add a click listener to the button
         mPickTime.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +95,7 @@ public class EditNotificationActivity extends AppCompatActivity {
         date_data = intent.getStringExtra("date_data");
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        mDateLabel.setText(date_data);
     }
 
     private void initiateUI(){
@@ -208,8 +211,8 @@ public class EditNotificationActivity extends AppCompatActivity {
         alertDialogBuilder
                 .setMessage(str + " at " + hour + ":" +  min + " " + mAMPM + " added.")
                 .setCancelable(false)
-                .setPositiveButton("Okay",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         // if this button is clicked, open CreateNewUserActivity
                         dialog.cancel();
                     }
