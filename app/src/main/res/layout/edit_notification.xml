@@ -1,229 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/date_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/date_field"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/noti_field_input"
+        android:layout_alignEnd="@+id/noti_field_input" />
+
+    <TextView
+        android:id="@+id/noti_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/noti_field"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"
+        android:layout_below="@+id/date_field"
+        android:layout_alignLeft="@+id/noti_field_input"
+        android:layout_alignStart="@+id/noti_field_input" />
+
+    <EditText
+        android:id="@+id/noti_field_input"
+        android:layout_below="@id/noti_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Walk Dog..."
+        android:padding="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:imeOptions="actionNext" />
+
+    <TextView
+        android:id="@+id/time_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Time"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"
+        android:layout_below="@+id/noti_field_input"
+        android:layout_alignLeft="@+id/noti_field_input"
+        android:layout_alignStart="@+id/noti_field_input" />
+
+    <Button android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Set Time "
+        android:background="@drawable/rounded_button"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/time_field"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:id="@+id/timeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Time Label"
+        android:textColor="@color/synapps_blue"
+        android:textSize="20sp"
+        android:layout_below="@+id/pickTime"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/repeat_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeDisplay"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Repeat"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/repeat_field_input"
+        android:layout_below="@+id/repeat_field" >
 
-        <TextView
-            android:id="@+id/date_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/date_field"
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/noti_field_input"
-            android:layout_alignEnd="@+id/noti_field_input" />
-
-        <TextView
-            android:id="@+id/noti_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/noti_field"
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            android:layout_below="@+id/date_field"
-            android:layout_alignLeft="@+id/noti_field_input"
-            android:layout_alignStart="@+id/noti_field_input" />
-
-        <EditText
-            android:id="@+id/noti_field_input"
-            android:layout_below="@id/noti_field"
-            android:layout_width="match_parent"
+        <CheckBox android:id="@+id/weekday_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:hint="Walk Dog..."
-            android:padding="10dp"
-            android:background="@drawable/rounded_edittext"
-            android:imeOptions="actionNext" />
+            android:text="Weekday"
+            android:onClick="onCheckBoxClick"/>
 
-        <TextView
-            android:id="@+id/time_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Time"
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            android:layout_below="@+id/noti_field_input"
-            android:layout_alignLeft="@+id/noti_field_input"
-            android:layout_alignStart="@+id/noti_field_input" />
-
-        <Button android:id="@+id/pickTime"
+        <CheckBox android:id="@+id/weekend_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Set Time "
-            android:background="@drawable/rounded_button"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:layout_below="@+id/time_field"
-            android:layout_centerHorizontal="true" />
-
-        <TextView android:id="@+id/timeDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Time Label"
-            android:textColor="@color/synapps_blue"
-            android:textSize="20sp"
-            android:layout_below="@+id/pickTime"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/repeat_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/timeDisplay"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Repeat"
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"/>
+            android:layout_toRightOf="@id/weekday_btn"
+            android:text="Weekend"
+            android:onClick="onCheckBoxClick"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/repeat_field_input"
-            android:layout_below="@+id/repeat_field"
-            android:layout_alignRight="@+id/save_button"
-            android:layout_alignEnd="@+id/save_button">
-
-            <CheckBox android:id="@+id/weekday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Weekday"
-                android:onClick="onCheckBoxClick"/>
-
-            <CheckBox android:id="@+id/weekend_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_toRightOf="@id/weekday_btn"
-                android:text="Weekend"
-                android:onClick="onCheckBoxClick"/>
-
-            <CheckBox android:id="@+id/monday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monday"
-                android:onClick="onCheckBoxClick"
-                android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/thursday_btn"
-                android:layout_alignStart="@+id/thursday_btn" />
-
-            <CheckBox android:id="@+id/tuesday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_below="@id/weekday_btn"
-                android:text="Tuesday"
-                android:onClick="onCheckBoxClick"/>
-
-            <CheckBox android:id="@+id/wednesday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wednesday"
-                android:onClick="onCheckBoxClick"
-                android:layout_below="@+id/weekend_btn"
-                android:layout_alignLeft="@+id/saturday_btn"
-                android:layout_alignStart="@+id/saturday_btn" />
-
-            <CheckBox android:id="@+id/thursday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_below="@id/monday_btn"
-                android:layout_toRightOf="@id/wednesday_btn"
-                android:text="Thursday"
-                android:onClick="onCheckBoxClick"/>
-
-            <CheckBox android:id="@+id/friday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_below="@id/tuesday_btn"
-                android:text="Friday"
-                android:onClick="onCheckBoxClick"/>
-
-            <CheckBox android:id="@+id/saturday_btn"
+        <CheckBox android:id="@+id/monday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-                android:text="Saturday"
+            android:layout_marginLeft="10dp"
+            android:text="Monday"
             android:onClick="onCheckBoxClick"
-                android:layout_alignParentBottom="true"
-                android:layout_alignLeft="@+id/weekend_btn"
-                android:layout_alignStart="@+id/weekend_btn" />
+            android:layout_toRightOf="@id/weekend_btn" />
 
-            <CheckBox android:id="@+id/sunday_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sunday"
-                android:onClick="onCheckBoxClick"
-                android:layout_alignParentBottom="true"
-                android:layout_alignLeft="@+id/thursday_btn"
-                android:layout_alignStart="@+id/thursday_btn" />
-
-
-        </RelativeLayout>
-
-
-        <TextView
-            android:id="@+id/img_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Image"
-            android:textColor="@color/synapps_blue"
-            android:textSize="25sp"
-            android:layout_below="@+id/repeat_field_input"
-            android:layout_alignLeft="@+id/cancel_button"
-            android:layout_alignStart="@+id/cancel_button" />
-
-        <Button android:id="@+id/img_btn"
+        <CheckBox android:id="@+id/tuesday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Upload Image "
-            android:background="@drawable/rounded_button"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:layout_below="@+id/repeat_field_input"
-            android:layout_alignLeft="@+id/timeDisplay"
-            android:layout_alignStart="@+id/timeDisplay" />
-
-        <Button
-            android:id="@+id/cancel_button"
-            android:layout_below="@id/img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_button_red"
-            android:text="Cancel"
-            android:textSize="15sp"
-            android:textColor="@color/white" />
+            android:layout_below="@id/weekday_btn"
+            android:text="Tuesday"
+            android:onClick="onCheckBoxClick"/>
 
-        <Button
-            android:id="@+id/save_button"
+        <CheckBox android:id="@+id/wednesday_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button_green"
-            android:text="Save"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:layout_alignTop="@+id/cancel_button"
-            android:layout_alignRight="@+id/img_field"
-            android:layout_alignEnd="@+id/img_field"
-            />
+            android:text="Wednesday"
+            android:onClick="onCheckBoxClick"
+            android:layout_below="@+id/weekend_btn"
+            android:layout_toRightOf="@id/tuesday_btn"
+            android:layout_alignLeft="@id/weekend_btn" />
 
+        <CheckBox android:id="@+id/thursday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/monday_btn"
+            android:layout_toRightOf="@id/wednesday_btn"
+            android:layout_alignLeft="@id/monday_btn"
+            android:text="Thursday"
+            android:onClick="onCheckBoxClick"/>
+
+        <CheckBox android:id="@+id/friday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/tuesday_btn"
+            android:text="Friday"
+            android:onClick="onCheckBoxClick"/>
+
+        <CheckBox android:id="@+id/saturday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:onClick="onCheckBoxClick"
+            android:layout_toRightOf="@id/friday_btn"
+            android:layout_below="@id/wednesday_btn"
+            android:layout_alignLeft="@+id/weekend_btn" />
+
+        <CheckBox android:id="@+id/sunday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday"
+            android:onClick="onCheckBoxClick"
+            android:layout_toRightOf="@id/saturday_btn"
+            android:layout_below="@id/thursday_btn"
+            android:layout_alignLeft="@+id/thursday_btn" />
     </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/img_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Image"
+        android:textColor="@color/synapps_blue"
+        android:textSize="25sp"
+        android:layout_below="@+id/repeat_field_input"
+        android:layout_alignLeft="@+id/cancel_button"
+        android:layout_alignStart="@+id/cancel_button" />
+
+    <Button android:id="@+id/img_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Upload Image "
+        android:background="@drawable/rounded_button"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/img_field"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_below="@id/img_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/rounded_button_red"
+        android:text="Cancel"
+        android:textSize="15sp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_btn"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_button_green"
+        android:text="Save"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_alignBottom="@+id/cancel_button"
+        android:layout_alignRight="@+id/img_field"
+        android:layout_alignEnd="@+id/img_field"
+        />
+</RelativeLayout>
 </ScrollView>
