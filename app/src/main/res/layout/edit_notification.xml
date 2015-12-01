@@ -11,13 +11,12 @@
             android:id="@+id/date_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:text="@string/date_field"
             android:textColor="@color/synapps_blue"
             android:textSize="25sp"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/noti_field"
-            android:layout_alignStart="@+id/noti_field" />
+            android:layout_alignRight="@+id/noti_field_input"
+            android:layout_alignEnd="@+id/noti_field_input" />
 
         <TextView
             android:id="@+id/noti_field"
@@ -46,13 +45,13 @@
             android:id="@+id/time_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/noti_field_input"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
             android:text="Time"
             android:textColor="@color/synapps_blue"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:layout_below="@+id/noti_field_input"
+            android:layout_alignLeft="@+id/noti_field_input"
+            android:layout_alignStart="@+id/noti_field_input" />
 
         <Button android:id="@+id/pickTime"
             android:layout_width="wrap_content"
@@ -196,8 +195,9 @@
             android:background="@drawable/rounded_button"
             android:textSize="15sp"
             android:textColor="@color/white"
-            android:layout_below="@+id/img_field"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/repeat_field_input"
+            android:layout_alignLeft="@+id/timeDisplay"
+            android:layout_alignStart="@+id/timeDisplay" />
 
         <Button
             android:id="@+id/cancel_button"
