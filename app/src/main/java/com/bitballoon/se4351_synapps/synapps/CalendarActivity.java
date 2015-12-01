@@ -24,6 +24,7 @@ public class CalendarActivity extends AppCompatActivity {
     final Context context = this;
 
     String notificationData = "";
+    String date_sel = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,16 @@ public class CalendarActivity extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int day  = date_picker.getDayOfMonth();
+                int month = date_picker.getMonth() + 1;
+                int year = date_picker.getYear();
+                date_sel = month + "/" + day + "/" + year;
+
+                //print_message("date_sel: " + date_sel);
+
                 Intent intent = new Intent(CalendarActivity.this, NotificationListActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("date_sel", date_sel);
                 startActivity(intent);
             }
         });
@@ -64,20 +73,19 @@ public class CalendarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CalendarActivity.this, MainMenuActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
 
-    private void getCalendarBtn() {
+    public void getCalendarBtn() {
         get_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int   day  = date_picker.getDayOfMonth();
-                int   month= date_picker.getMonth() + 1;
-                int   year = date_picker.getYear();
-                String   date_sel = month + " " + day + " " + year;
-                print_message("get calendar: " + month + " " + day + ", " + year);
+//                int   day  = date_picker.getDayOfMonth();
+//                int   month= date_picker.getMonth() + 1;
+//                int   year = date_picker.getYear();
+//                date_sel = month + " " + day + " " + year;
+                print_message("Temporary ^-^ ");
 
             }
         });

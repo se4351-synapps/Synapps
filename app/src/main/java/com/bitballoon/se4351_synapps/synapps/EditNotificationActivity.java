@@ -50,6 +50,7 @@ public class EditNotificationActivity extends AppCompatActivity {
 
     EditText noti_input;
 
+    String date_data = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,8 @@ public class EditNotificationActivity extends AppCompatActivity {
             noti_input.setText(intent.getStringExtra("notificationText"));
             mTimeDisplay.setText(intent.getStringExtra("notificationTime"));
         }
+        // date from calendar
+        date_data = intent.getStringExtra("date_data");
     }
 
     private void initiateUI(){
@@ -137,8 +140,10 @@ public class EditNotificationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //print_message("Notification Created");
                 convert_time();
-                print_notification(noti_input.getText().toString(), mHour, mMinute);
-                showNotification(noti_input.getText().toString(), mHour, mMinute, mAMPM, "12/01/15");
+                String hour = pad(mHour);
+                String min = pad(mMinute);
+                print_notification(noti_input.getText().toString(), hour, min);
+                showNotification(noti_input.getText().toString(), hour, min, mAMPM, date_data);
                 //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
 
             }
@@ -161,14 +166,14 @@ public class EditNotificationActivity extends AppCompatActivity {
         }
     }
 
-    public void showNotification(String noti, int hour, int min, String ampm, String date) {
+    public void showNotification(String noti, String hour, String min, String ampm, String date) {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, DisplayNotificationsActivity.class), 0);
         Resources r = getResources();
         Notification notification = new NotificationCompat.Builder(this)
-                .setTicker("Ticker")
+                .setTicker("Notification")
                 .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                .setContentTitle("Date Entered: " + date)
-                .setContentText( "Time: " + hour + ":" + min + " " + ampm + " " + noti)
+                .setContentTitle("Date: " + date)
+                .setContentText( hour + ":" + min + " " + ampm + " - " + noti)
                 .setContentIntent(pi)
                 .setAutoCancel(true)
                 .build();
@@ -181,7 +186,7 @@ public class EditNotificationActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                print_message("Canceled Notification ._.");
+                //print_message("Canceled Notification ._.");
                 finish();
                 //Toast.makeText(EditNotificationActivity.this, "Notification Created", Toast.LENGTH_LONG);
 
@@ -189,17 +194,17 @@ public class EditNotificationActivity extends AppCompatActivity {
         });
     }
 
-    public void print_notification(String str, int hour, int min) {
+    public void print_notification(String str, String hour, String min) {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
 
         // set title
-        alertDialogBuilder.setTitle("Save Button Called ^-^");
+        alertDialogBuilder.setTitle(date_data);
 
         // set dialog message
         alertDialogBuilder
-                .setMessage("Notification saved: "+ str + " " + hour + ":" +  min + " " + mAMPM)
+                .setMessage(str + " at " + hour + ":" +  min + " " + mAMPM + " added.")
                 .setCancelable(false)
                 .setPositiveButton("Okay",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
@@ -258,10 +263,12 @@ public class EditNotificationActivity extends AppCompatActivity {
 
     // updates the time we display in the TextView
     private void updateDisplay() {
+        convert_time();
         mTimeDisplay.setText(
                 new StringBuilder()
                         .append(pad(mHour)).append(":")
-                        .append(pad(mMinute)));
+                        .append(pad(mMinute)).append(" ")
+                        .append(mAMPM));
     }
 
     // the callback received when the user "sets" the time in the dialog
