@@ -28,7 +28,7 @@ public class PinActivity extends AppCompatActivity {
     private Button pinButton;
     private Button newPinButton;
     private Button resumeAppButton;
-    private String activePin;
+    private String activePin="";
 
 
     @Override
@@ -80,6 +80,7 @@ public class PinActivity extends AppCompatActivity {
                 Intent rp = getIntent();
                 if(null != rp){
                     activePin= rp.getStringExtra(KEY_PIN);
+
                     if (pinNumber.getText().toString().equals(activePin)) {
                         Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
                         startActivity(intent);
