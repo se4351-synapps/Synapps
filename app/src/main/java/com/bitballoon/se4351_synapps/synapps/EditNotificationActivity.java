@@ -144,7 +144,7 @@ public class EditNotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //print_message("Notification Created");
-                convert_time();
+                //convert_time();
                 String hour = pad(mHour);
                 String min = pad(mMinute);
                 print_notification(noti_input.getText().toString(), hour, min);
