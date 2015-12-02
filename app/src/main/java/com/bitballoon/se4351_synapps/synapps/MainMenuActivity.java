@@ -24,6 +24,7 @@ public class MainMenuActivity extends AppCompatActivity {
     final Context context = this;
     ArrayList<Notification> notificationArray;
     String notificationData = "";
+    String notificationArrayListSize = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,10 @@ public class MainMenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        notificationArrayListSize = intent.getStringExtra("notificationArrayListSize");
 
         Log.d("notificationData", notificationData);
+        Log.d(notificationArrayListSize, "notificationArrayList");
 
         daily_routine_icon_click();
         back_icon_click();
@@ -48,6 +51,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainMenuActivity.this, CalendarActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                 startActivity(intent);
             }
         });
@@ -61,6 +65,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainMenuActivity.this, DisplayNotificationsActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                 startActivity(intent);
                 finish();
             }

@@ -36,6 +36,7 @@ public class CreatePinActivity extends AppCompatActivity {
     private static String pinNum;
     private Button makepinButton;
     String notificationData = "";
+    String notificationArrayListSize = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,9 @@ public class CreatePinActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        notificationArrayListSize = intent.getStringExtra("notificationArrayListSize");
         Log.d("notificationData", notificationData);
-
+        Log.d(notificationArrayListSize, "notificationArrayList");
         initializeUI();
         makePin();
         getPin();
@@ -65,6 +67,7 @@ public class CreatePinActivity extends AppCompatActivity {
                 pinNum = newpinNumber.getText().toString();
                 Intent pn = new Intent(CreatePinActivity.this, PinActivity.class);
                 pn.putExtra("notificationData", notificationData);
+                pn.putExtra("notificationArrayListSize", notificationArrayListSize);
                 pn.putExtra(KEY_PIN, pinNum);
                 startActivity(pn);
 //                Intent intent = new Intent(CreatePinActivity.this, PinActivity.class);

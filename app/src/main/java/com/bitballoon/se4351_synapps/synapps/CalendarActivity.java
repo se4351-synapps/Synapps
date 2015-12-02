@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ public class CalendarActivity extends AppCompatActivity {
     final Context context = this;
 
     String notificationData = "";
+    String notificationArrayListSize = "";
     String date_sel = "";
 
     @Override
@@ -37,7 +39,9 @@ public class CalendarActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        notificationArrayListSize = intent.getStringExtra("notificationArrayListSize");
 
+        Log.d(notificationArrayListSize, "notificationArrayList");
         initiateUI();
         continueCalendarBtn();
         cancelCalendarBtn();
@@ -65,6 +69,7 @@ public class CalendarActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(CalendarActivity.this, NotificationListActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                 intent.putExtra("date_sel", date_sel);
                 startActivity(intent);
             }

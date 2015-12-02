@@ -61,6 +61,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", Integer.toString(notificationArrayList.size()));
                 startActivity(intent);
             }
         });
@@ -68,6 +69,8 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
 
     // method sets the adapter for the listview of notifications
     private void setNotificationAdapter() {
+        Intent intent = getIntent();
+
         notificationsListView = (ListView) findViewById(R.id.notifications_listview);
         notificationArrayList = new ArrayList<Notification>();
 
@@ -80,26 +83,47 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
 
         notificationImage.setImageResource(R.mipmap.daily_routine);
 
-        // loop to make list of notifications
-        for (int i = 0; i < 5; i++) {
-            DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-            //get current date time with Calendar()
-            Calendar cal = Calendar.getInstance();
 
-            // strings for the notification text
-            String text = new String("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
-            String time = new String(dateFormat.format(cal.getTime()));
-            // sets notification data
-            notificationText.setText(text);
-            notificationTime.setText(time);
-            // creates notification and adds to arraylist
-            notificationArrayList.add(i, new Notification(notificationImage, text, time));
-            notificationAdapter.notifyDataSetChanged();
+        notificationText.setText("Because he’s the hero Gotham deserves, but not the one it needs right now.");
+        notificationTime.setText("9:30 PM");
+        notificationArrayList.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
 
-            notificationData += text + "," + time + ";";
+        notificationText.setText("You either die a hero or you live long enough to see yourself become the villain.");
+        notificationTime.setText("12:00 AM");
+        notificationArrayList.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
 
+        notificationAdapter.notifyDataSetChanged();
+
+        for (int i = 0; i < notificationArrayList.size(); i++) {
+            notificationData += notificationArrayList.get(i).getNotification_text() + "|" + notificationArrayList.get(i).getActivity_time() + ";";
             Log.d("notificationData", notificationData);
         }
+
+        if (intent == null)
+            notificationArrayList.add(new Notification(notificationImage, intent.getStringExtra("notification"),
+                intent.getStringExtra("hour") + ":" + intent.getStringExtra("minute") + " " + intent.getStringExtra("ampm")));
+
+        Log.d(Integer.toString(notificationArrayList.size()), "notificationArrayList");
+//        // loop to make list of notifications
+//        for (int i = 0; i < 2; i++) {
+//            DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+//            //get current date time with Calendar()
+//            Calendar cal = Calendar.getInstance();
+//
+//            // strings for the notification text
+//            String text = new String("This is a notification. The notification is number " + (i + 1) + " in this list. Checking to see if the list populates with new data for each item.");
+//            String time = new String(dateFormat.format(cal.getTime()));
+//            // sets notification data
+//            notificationText.setText(text);
+//            notificationTime.setText(time);
+//            // creates notification and adds to arraylist
+//            notificationArrayList.add(i, new Notification(notificationImage, text, time));
+//            notificationAdapter.notifyDataSetChanged();
+//
+//            notificationData += text + "," + time + ";";
+//
+//            Log.d("notificationData", notificationData);
+//        }
 
 //        notificationText.setText("Notification 1: Because he’s the hero Gotham deserves, but not the one it needs right now. So we’ll hunt him because he can take it. Because he’s not our hero. He’s a silent guardian. A watchful protector. A dark knight.");
 //        notificationTime.setText("9:30 PM");

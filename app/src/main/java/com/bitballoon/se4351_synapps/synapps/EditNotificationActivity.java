@@ -4,6 +4,7 @@ package com.bitballoon.se4351_synapps.synapps;
  * Created by brandonquiocho on 11/6/15.
  */
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.Notification;
@@ -14,12 +15,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v4.app.NotificationCompat;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -81,9 +88,11 @@ public class EditNotificationActivity extends AppCompatActivity {
 
         // get the current time
         final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mHour = c.get(Calendar.HOUR);
         mMinute = c.get(Calendar.MINUTE);
 
+        Log.d(Integer.toString(mHour), "mHour");
+        Log.d(Integer.toString(mMinute), "mMinute");
         // display the current date
         updateDisplay();
 
@@ -173,19 +182,37 @@ public class EditNotificationActivity extends AppCompatActivity {
     }
 
     public void showNotification(String noti, String hour, String min, String ampm, String date) {
-        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, DisplayNotificationsActivity.class), 0);
-        Resources r = getResources();
-        Notification notification = new NotificationCompat.Builder(this)
-                .setTicker("Notification")
-                .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                .setContentTitle("Date: " + date)
-                .setContentText( hour + ":" + min + " " + ampm + " - " + noti)
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .build();
+//        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, DisplayNotificationsActivity.class), 0);
+//        Resources r = getResources();
+//        Notification notification = new NotificationCompat.Builder(this)
+//                .setTicker("Notification")
+//                .setSmallIcon(android.R.drawable.ic_menu_report_image)
+//                .setContentTitle("Date: " + date)
+//                .setContentText( hour + ":" + min + " " + ampm + " - " + noti)
+//                .setContentIntent(pi)
+//                .setAutoCancel(true)
+//                .build();
+//
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        notificationManager.notify(0, notification);
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        Intent intent = new Intent(EditNotificationActivity.this, AlarmService.class);
+        intent.putExtra("date", date);
+        intent.putExtra("hour", hour);
+        intent.putExtra("minute", min);
+        intent.putExtra("ampm", ampm);
+        intent.putExtra("notification", noti);
+        PendingIntent pendingIntent = PendingIntent.getService(EditNotificationActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, Integer.valueOf(hour));
+        calendar.set(Calendar.MINUTE, Integer.valueOf(min));
+        calendar.set(Calendar.SECOND, 0);
+
+        Date futureDate = calendar.getTime();
+
+        long timeDifference = futureDate.getTime() - System.currentTimeMillis();
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeDifference, pendingIntent);
     }
 
     private void cancelNotificationBtn() {

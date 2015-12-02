@@ -29,6 +29,7 @@ public class NotificationListActivity extends AppCompatActivity {
     TextView notificationTime;
     ArrayList<Notification> notificationArrayList;
     String notificationData = "";
+    String notificationArrayListSize = "";
     String date_data = "";
 
     // add notification button
@@ -41,9 +42,11 @@ public class NotificationListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        notificationArrayListSize = intent.getStringExtra("notificationArrayListSize");
         date_data = intent.getStringExtra("date_sel");
 
         Log.d("notificationData", notificationData);
+        Log.d(notificationArrayListSize, "notificationArrayList");
         setNotificationAdapter();
         goToEditNotification();
     }
@@ -65,10 +68,10 @@ public class NotificationListActivity extends AppCompatActivity {
         String[] notifications = notificationData.split(";");
 
         // loop to make list of notifications
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < Integer.parseInt(notificationArrayListSize); i++) {
             // strings for the notification text
-            String text = new String(notifications[i].substring(0, notifications[i].indexOf(',')));
-            String time = new String(notifications[i].substring(notifications[i].indexOf(',') + 1, notifications[i].length()));
+            String text = new String(notifications[i].substring(0, notifications[i].indexOf('|')));
+            String time = new String(notifications[i].substring(notifications[i].indexOf('|') + 1, notifications[i].length()));
 
             // sets notification data
             notificationText.setText(text);

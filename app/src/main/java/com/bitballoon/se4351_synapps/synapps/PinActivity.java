@@ -35,6 +35,7 @@ public class PinActivity extends AppCompatActivity {
     private String activePin="";
 
     String notificationData = "";
+    String notificationArrayListSize = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,9 @@ public class PinActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         notificationData = intent.getStringExtra("notificationData");
+        notificationArrayListSize = intent.getStringExtra("notificationArrayListSize");
         Log.d("notificationData", notificationData);
-
+        Log.d(notificationArrayListSize, "notificationArrayList");
         initializeUI();
         resumeApp();
         logIn();
@@ -68,6 +70,7 @@ public class PinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                 startActivity(intent);
                 finish();
             }
@@ -93,6 +96,7 @@ public class PinActivity extends AppCompatActivity {
                 if (pinNumber.getText().toString().equals(activePin)) {
                     Intent intent = new Intent(PinActivity.this, MainMenuActivity.class);
                     intent.putExtra("notificationData", notificationData);
+                    intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                     startActivity(intent);
                     finish();
                 } else {
@@ -110,6 +114,7 @@ public class PinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PinActivity.this, CreatePinActivity.class);
                 intent.putExtra("notificationData", notificationData);
+                intent.putExtra("notificationArrayListSize", notificationArrayListSize);
                 startActivity(intent);
                 finish();
             }
