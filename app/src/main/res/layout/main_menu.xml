@@ -190,7 +190,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_below="@id/bottom_row"
-            android:layout_marginTop="50dp" >
+            android:layout_marginTop="50dp"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/back_icon"
