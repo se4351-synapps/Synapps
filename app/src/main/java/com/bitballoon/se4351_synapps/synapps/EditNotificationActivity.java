@@ -197,13 +197,13 @@ public class EditNotificationActivity extends AppCompatActivity {
 //        notificationManager.notify(0, notification);
 
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(EditNotificationActivity.this, AlarmService.class);
-        intent.putExtra("date", date);
-        intent.putExtra("hour", hour);
-        intent.putExtra("minute", min);
-        intent.putExtra("ampm", ampm);
-        intent.putExtra("notification", noti);
-        PendingIntent pendingIntent = PendingIntent.getService(EditNotificationActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent notificationIntent = new Intent(EditNotificationActivity.this, AlarmService.class);
+        notificationIntent.putExtra("date", date);
+        notificationIntent.putExtra("hour", hour);
+        notificationIntent.putExtra("minute", min);
+        notificationIntent.putExtra("ampm", ampm);
+        notificationIntent.putExtra("notification", noti);
+        PendingIntent pendingIntent = PendingIntent.getService(EditNotificationActivity.this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR, Integer.valueOf(hour));
         calendar.set(Calendar.MINUTE, Integer.valueOf(min));

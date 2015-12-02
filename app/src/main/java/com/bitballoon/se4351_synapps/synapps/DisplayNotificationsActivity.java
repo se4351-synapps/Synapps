@@ -37,7 +37,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     ImageView notificationImage;
     TextView notificationText;
     TextView notificationTime;
-    ArrayList<Notification> notificationArrayList;
+    ArrayList<Notification> notificationArrayList = new ArrayList<Notification>();
     String notificationData = "";
 
     // home button
@@ -48,9 +48,20 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_notifications);
 
+        notificationImage = new ImageView(this);
+        notificationText = new TextView(this);
+        notificationTime = new TextView(this);
+
+        notificationImage.setImageResource(R.mipmap.daily_routine);
+
+        notificationsListView = (ListView) findViewById(R.id.notifications_listview);
+        notificationAdapter = new NotificationAdapter(this, notificationArrayList);
+        notificationsListView.setAdapter(notificationAdapter);
+
         // set the adapter for the listview for notifications
         setNotificationAdapter();
 
+        onNewIntent(getIntent());
         // show detailed view of notification
         showDetailedNotification();
 
@@ -61,47 +72,46 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayNotificationsActivity.this, PinActivity.class);
                 intent.putExtra("notificationData", notificationData);
-                intent.putExtra("notificationArrayListSize", Integer.toString(notificationArrayList.size()));
+                intent.putExtra("notificationArrayListSize", Integer.toString(notificationAdapter.getCount()));
                 startActivity(intent);
             }
         });
     }
 
+    @Override
+    public void onNewIntent(Intent intent){
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            // extract the extra-data in the Notification
+            String msg = extras.getString("notificationData");
+            // strings for the notification text
+            String text = new String(msg.substring(0, msg.indexOf('|')));
+            String time = new String(msg.substring(msg.indexOf('|') + 1, msg.length()));
+            notificationAdapter.add(new Notification(notificationImage, text, time));
+            notificationData += text + "|" + time + ";";
+            notificationAdapter.notifyDataSetChanged();
+        }
+
+
+
+    }
+
     // method sets the adapter for the listview of notifications
     private void setNotificationAdapter() {
-        Intent intent = getIntent();
-
-        notificationsListView = (ListView) findViewById(R.id.notifications_listview);
-        notificationArrayList = new ArrayList<Notification>();
-
-        notificationAdapter = new NotificationAdapter(this, notificationArrayList);
-        notificationsListView.setAdapter(notificationAdapter);
-
-        notificationImage = new ImageView(this);
-        notificationText = new TextView(this);
-        notificationTime = new TextView(this);
-
-        notificationImage.setImageResource(R.mipmap.daily_routine);
-
-
         notificationText.setText("Because he’s the hero Gotham deserves, but not the one it needs right now.");
         notificationTime.setText("9:30 PM");
-        notificationArrayList.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
+        notificationAdapter.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
 
         notificationText.setText("You either die a hero or you live long enough to see yourself become the villain.");
         notificationTime.setText("12:00 AM");
-        notificationArrayList.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
+        notificationAdapter.add(new Notification(notificationImage, notificationText.getText().toString(), notificationTime.getText().toString()));
 
-        notificationAdapter.notifyDataSetChanged();
-
-        for (int i = 0; i < notificationArrayList.size(); i++) {
+        for (int i = 0; i < notificationAdapter.getCount(); i++) {
             notificationData += notificationArrayList.get(i).getNotification_text() + "|" + notificationArrayList.get(i).getActivity_time() + ";";
             Log.d("notificationData", notificationData);
         }
 
-        if (intent == null)
-            notificationArrayList.add(new Notification(notificationImage, intent.getStringExtra("notification"),
-                intent.getStringExtra("hour") + ":" + intent.getStringExtra("minute") + " " + intent.getStringExtra("ampm")));
+        notificationAdapter.notifyDataSetChanged();
 
         Log.d(Integer.toString(notificationArrayList.size()), "notificationArrayList");
 //        // loop to make list of notifications

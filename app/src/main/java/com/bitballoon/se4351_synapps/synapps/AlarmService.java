@@ -44,6 +44,12 @@ public class AlarmService extends Service
                 .build();
 
         notificationManager.notify(0, notification);
+
+        Intent notificationIntent = new Intent(getApplicationContext(), DisplayNotificationsActivity.class);
+        String notificationData = intent.getStringExtra("notification") + "|" + intent.getStringExtra("hour") + ":" + intent.getStringExtra("minute") + " " + intent.getStringExtra("ampm");
+        notificationIntent.putExtra("notificationData", notificationData);
+        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingNotificationIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
