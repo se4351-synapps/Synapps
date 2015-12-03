@@ -39,6 +39,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     TextView notificationTime;
     ArrayList<Notification> notificationArrayList = new ArrayList<Notification>();
     String notificationData = "";
+    String msg = "";
 
     // home button
     ImageView homeButton;
@@ -82,14 +83,16 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
     public void onNewIntent(Intent intent){
         Bundle extras = getIntent().getExtras();
         if(extras != null){
-            // extract the extra-data in the Notification
-            String msg = extras.getString("notificationData");
-            // strings for the notification text
-            String text = new String(msg.substring(0, msg.indexOf('|')));
-            String time = new String(msg.substring(msg.indexOf('|') + 1, msg.length()));
-            notificationAdapter.add(new Notification(notificationImage, text, time));
-            notificationData += text + "|" + time + ";";
-            notificationAdapter.notifyDataSetChanged();
+            if (extras.containsKey("notificationData")) {
+                // extract the extra-data in the Notification
+                msg = extras.getString("notificationData");
+                // strings for the notification text
+                String text = new String(msg.substring(0, msg.indexOf('|')));
+                String time = new String(msg.substring(msg.indexOf('|') + 1, msg.length()));
+                notificationAdapter.add(new Notification(notificationImage, text, time));
+                notificationData += text + "|" + time + ";";
+                notificationAdapter.notifyDataSetChanged();
+            }
         }
 
 
@@ -155,6 +158,7 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
         // when notification in listview is clicked
         notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             AlertDialog alertDialog;
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // set size of notification image in the alertdialog
@@ -216,5 +220,13 @@ public class DisplayNotificationsActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
