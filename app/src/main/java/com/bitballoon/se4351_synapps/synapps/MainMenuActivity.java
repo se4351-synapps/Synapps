@@ -86,7 +86,7 @@ public class MainMenuActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_call:
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:2816850685"));
+                callIntent.setData(Uri.parse("tel:5055034455"));
                 startActivity(callIntent);
                 // User chose the "Call" item, call caretaker
                 return true;
